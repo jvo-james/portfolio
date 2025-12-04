@@ -12,314 +12,368 @@
 
   <style>
     :root{
-      --bg: #0f1724; /* deep navy */
-      --panel: rgba(255,255,255,0.04);
-      --accent: #6ee7b7; /* soft green */
-      --muted: #9aa4b2;
-      --glass: rgba(255,255,255,0.03);
-      --card-radius: 16px;
-      color-scheme: dark;
+      --bg-1:#071026; --bg-2:#08142a; --panel: rgba(255,255,255,0.03);
+      --accent:#ff6b61; --muted:#9fb0c8; --glass: rgba(255,255,255,0.02);
+      --radius:18px; --fw-regular:400; --fw-strong:700;
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071024 0%, #091226 60%);color:#e6eef6}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:#e9f4ff}
+    a{color:inherit}
 
-    /* Container */
-    .wrap{max-width:1100px;margin:40px auto;padding:28px}
+    .container{max-width:1200px;margin:28px auto;padding:28px}
 
     /* Header */
-    header{display:flex;gap:20px;align-items:center}
-    .avatar{
-      width:130px;height:130px;border-radius:18px;overflow:hidden;flex:0 0 130px;box-shadow:0 8px 30px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.04);
-      background: linear-gradient(135deg,#0b1220, #0f253a);
-      display:flex;align-items:center;justify-content:center;
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .title{
-      flex:1
-    }
-    .title h1{margin:0;font-size:22px;letter-spacing:-0.2px}
-    .title p{margin:6px 0 0;color:var(--muted)}
-    .meta{display:flex;gap:12px;align-items:center;margin-top:10px}
-    .pill{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);display:inline-flex;gap:8px;align-items:center}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#0d2438,#1b3b53);display:flex;align-items:center;justify-content:center;font-weight:800}
+    .brand h1{margin:0;font-size:16px}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{font-size:14px;color:var(--muted);text-decoration:none}
 
-    /* Grid */
-    .grid{display:grid;grid-template-columns: 2fr 1fr;gap:22px;margin-top:28px}
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;margin-top:22px;align-items:center}
+    .hero-left{padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid var(--panel)}
+    .eyebrow{color:var(--muted);font-weight:600;letter-spacing:0.6px}
+    .hero-left h2{font-size:36px;margin:10px 0 6px}
+    .hero-left h3{font-size:28px;margin:0;color:#fff}
+    .hero-left p{color:var(--muted);line-height:1.6;margin-top:12px}
+    .cta-row{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:10px;border:none;cursor:pointer}
+    .btn-accent{background:linear-gradient(90deg,var(--accent),#ff8b7f);color:#021016;font-weight:700}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
-    /* Card */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:var(--card-radius);box-shadow:0 6px 20px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
-    h2{margin:0 0 12px;font-size:18px}
-    .muted{color:var(--muted);font-size:14px}
+    /* hero-right with big portrait and graphic */
+    .hero-right{position:relative;height:460px;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 70% 30%, rgba(255,107,97,0.12), transparent 20%), linear-gradient(180deg,#061221,#071a2b);display:flex;align-items:center;justify-content:center}
+    .hero-right .portrait{width:360px;height:360px;border-radius:999px;overflow:hidden;border:6px solid rgba(255,255,255,0.03);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+    .hero-right .portrait img{width:100%;height:100%;object-fit:cover;display:block;transform:translateY(0);transition:transform 600ms}
 
-    /* About */
-    .about p{line-height:1.6;color:#cfdbea}
+    /* skill ribbon */
+    .ribbon{margin-top:18px;background:rgba(255,255,255,0.01);padding:12px;border-radius:12px;display:flex;gap:12px;overflow-x:auto}
+    .ribbon .tag{min-width:110px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);text-align:center;color:var(--muted);font-weight:600}
+
+    /* About + Stats */
+    .two-col{display:grid;grid-template-columns:1fr 340px;gap:22px;margin-top:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:18px;border-radius:var(--radius);border:1px solid var(--panel);box-shadow:0 8px 30px rgba(2,6,23,0.55)}
+    .stats{display:flex;gap:14px;justify-content:space-between;margin-top:18px}
+    .stat{flex:1;text-align:center}
+    .stat h4{margin:6px 0 0;color:var(--accent)}
+
+    /* Projects gallery */
+    .projects{margin-top:28px}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .project{position:relative;border-radius:12px;overflow:hidden;height:220px}
+    .project img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform 350ms}
+    .project:hover img{transform:scale(1)}
+    .project .overlay{position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(180deg, transparent, rgba(3,6,10,0.6))}
 
     /* Experience timeline */
-    .timeline{display:flex;flex-direction:column;gap:12px}
-    .item{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start}
-    .item .logo{width:46px;height:46px;border-radius:10px;background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:20px}
-    .item h3{margin:0;font-size:15px}
-    .item .meta{margin-top:6px}
-    .item .period{color:var(--muted);font-size:13px}
-    .item p{margin:8px 0 0;color:#ccd9e6}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:12px;font-size:13px;color:var(--muted)}
+    .timeline{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+    .exp-item{display:flex;gap:14px;align-items:flex-start}
+    .exp-item img.logo{width:74px;height:74px;border-radius:10px;object-fit:cover}
+    .exp-item .exp-body{flex:1}
 
-    /* Right column */
-    .stat-grid{display:flex;gap:12px}
-    .stat{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;text-align:center}
-    .stat h3{margin:6px 0 0;font-size:20px;color:var(--accent)}
-    .edu{margin-top:12px}
-    .contact{display:flex;flex-direction:column;gap:10px}
-    .contact a, .contact button{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e7f0fb;text-decoration:none}
+    /* Education cards with images */
+    .education{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .edu-card{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px}
+    .edu-card img{width:110px;height:80px;border-radius:8px;object-fit:cover}
 
-    /* Footer */
-    footer{margin-top:32px;text-align:center;color:var(--muted);font-size:13px}
+    /* contact */
+    .contact{margin-top:28px;display:flex;gap:12px;align-items:center}
+    .contact .socials{display:flex;gap:10px}
+    .socials a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);text-decoration:none;color:var(--muted)}
 
-    /* Responsive */
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      header{flex-direction:row}
-      .avatar{width:110px;height:110px}
+    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr 360px}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:820px){
+      .hero{grid-template-columns:1fr;}
+      .hero-right{height:360px}
+      .two-col{grid-template-columns:1fr}
+      .education{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr}
     }
 
-    /* Simple reveal animations */
-    .reveal{opacity:0;transform:translateY(12px);transition:all 600ms cubic-bezier(.2,.9,.3,1)}
+    /* reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:all 600ms cubic-bezier(.2,.9,.3,1)}
     .reveal.show{opacity:1;transform:none}
 
-    /* Fancy header action button */
-    .cta{background:linear-gradient(90deg,var(--accent),#7dd3fc);color:#021016;padding:10px 14px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
-
-    /* subtle hover */
-    a:hover, button:hover{transform:translateY(-2px);transition:transform 180ms}
-
-    /* experience bullets styling */
-    .bullets{margin:8px 0 0;list-style:none;padding:0;display:grid;gap:6px}
-    .bullets li{padding-left:18px;position:relative}
-    .bullets li:before{content:'\f00c';font-family:FontAwesome;position:absolute;left:0;top:0;color:var(--accent);font-size:12px}
-
-    /* tiny company tags */
-    .company{color:var(--muted);font-size:13px}
+    /* subtle focus */
+    :focus{outline:2px solid rgba(255,255,255,0.06);outline-offset:2px}
   </style>
 </head>
 <body>
-
-  <div class="wrap">
-    <!-- Header -->
+  <div class="container">
     <header class="reveal">
-      <div class="avatar" aria-hidden="true">
-        <!-- Replace the src with Sadel's real headshot -->
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Sadel Sofo headshot">
-      </div>
-      <div class="title">
-        <h1>Sadel Sofo <span style="font-weight:600;color:var(--muted);font-size:15px">— Graduate Student, University of Ottawa</span></h1>
-        <div class="meta">
-          <div class="pill"><i class="fa fa-map-marker"></i> Ottawa, Ontario, Canada</div>
-          <div class="pill"><i class="fa fa-envelope"></i> <a href="mailto:contact@example.com" style="color:inherit;text-decoration:none">contact@example.com</a></div>
-          <div class="pill"><i class="fa fa-user"></i> She / Her</div>
+      <div class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <h1>Sadel Sofo</h1>
+          <div style="color:var(--muted);font-size:13px;margin-top:4px">Graduate Student — University of Ottawa</div>
         </div>
       </div>
-      <div style="margin-left:18px;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
-        <button class="cta" onclick="scrollToSection('contact')"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact</button>
-        <a class="pill" href="#experience" style="text-decoration:none"><i class="fa fa-briefcase"></i> View Experience</a>
-      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
-    <div class="grid">
-      <!-- Left column -->
-      <div>
-        <section class="card about reveal" id="about">
-          <h2>About</h2>
-          <p>
-            Sadel Sofo is a dedicated graduate student at the University of Ottawa with experience in client services, research on accessibility, and retail operations. She is passionate about inclusive design, customer-centred service, and collaborative teamwork. Sadel brings a strong work ethic, excellent communication, and project organization skills to every role she undertakes.
-          </p>
-        </section>
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <div class="hero-left card reveal">
+        <div class="eyebrow">Hello<span style="color:var(--accent)">.</span></div>
+        <h2>I'm Sadel — <span style="color:var(--muted);font-weight:600">She / Her</span></h2>
+        <h3>Graduate Student • Accessibility Researcher • Customer Experience</h3>
+        <p>Passionate about inclusive design, service excellence, and building practical solutions that improve people's lives. My work spans accessibility research, client services, and retail leadership where I centre empathy and reliability.</p>
 
-        <section class="card reveal" id="experience" style="margin-top:16px">
-          <h2>Experience</h2>
-          <div class="timeline">
-            <!-- Dollarama -->
-            <div class="item">
-              <div class="logo"><i class="fa fa-shopping-cart"></i></div>
-              <div>
-                <h3>Sales Associate — Dollarama L.P.</h3>
-                <div class="company">Feb 2023 — Present · Orleans, ON (On-site)</div>
-                <p>
-                  - Greet and acknowledge customers while providing excellent customer service; process transactions and cash handling; participate in opening/closing duties; maintain tidy sales floor; collaborate with team members to complete tasks.
-                </p>
-                <div class="skills" style="margin-top:8px">
-                  <div class="skill">Customer Service</div>
-                  <div class="skill">Time Management</div>
-                  <div class="skill">Flexible Approach</div>
-                </div>
-              </div>
-            </div>
+        <div class="cta-row">
+          <button class="btn btn-accent" onclick="scrollToSection('contact')"><i class="fa fa-paper-plane"></i>&nbsp;Get in touch</button>
+          <a class="btn btn-ghost" href="#projects"><i class="fa fa-briefcase"></i>&nbsp;View projects</a>
+          <a class="btn btn-ghost" href="#" onclick="downloadResume()"><i class="fa fa-download"></i>&nbsp;Resume (PDF)</a>
+        </div>
 
-            <!-- Magnify Access -->
-            <div class="item">
-              <div class="logo"><i class="fa fa-universal-access"></i></div>
-              <div>
-                <h3>Accommodation Research Specialist — Magnify Access Inc.</h3>
-                <div class="company">Jan 2024 — Apr 2024 · Toronto, ON (Contract)</div>
-                <p>
-                  Conducted in-depth research on accessibility and accommodation trends; collaborated with product teams to inform accessible solutions; translated findings into actionable recommendations and presented reports to stakeholders.
-                </p>
-                <div class="skills">
-                  <div class="skill">Project Management</div>
-                  <div class="skill">Communication</div>
-                  <div class="skill">Organization</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Laura Canada -->
-            <div class="item">
-              <div class="logo"><i class="fa fa-users"></i></div>
-              <div>
-                <h3>Client Services Coordinator — Laura Canada</h3>
-                <div class="company">Feb 2023 — Feb 2024 · Ottawa, ON (On-site)</div>
-                <p>
-                  Handled customer inquiries and transactions, managed merchandise and stocking, and supported daily front-of-house activities while ensuring high levels of customer satisfaction.
-                </p>
-              </div>
-            </div>
-
-            <!-- The Children's Place -->
-            <div class="item">
-              <div class="logo"><i class="fa fa-child"></i></div>
-              <div>
-                <h3>Part Time Sales Associate — The Children's Place</h3>
-                <div class="company">Sep 2022 — Jul 2023 · Orleans, ON</div>
-                <p>
-                  Assisted customers, maintained stock levels and merchandising standards, and provided fast, friendly service at the cashier.
-                </p>
-              </div>
-            </div>
-
-            <!-- The Shoe Company -->
-            <div class="item">
-              <div class="logo"><i class="fa fa-shopping-bag"></i></div>
-              <div>
-                <h3>Part Time Sales Associate — The Shoe Company</h3>
-                <div class="company">Oct 2021 — Aug 2022 · Ajax, ON</div>
-                <p>
-                  Built customer relationships, handled transactions and inventory tasks, and supported merchandising and floor layout.
-                </p>
-              </div>
-            </div>
-
-            <!-- The Body Shop -->
-            <div class="item">
-              <div class="logo"><i class="fa fa-leaf"></i></div>
-              <div>
-                <h3>Part Time Customer Consultant — The Body Shop</h3>
-                <div class="company">Oct 2020 — Aug 2021 · Ottawa, ON</div>
-                <p>
-                  Assisted customers with product needs, supported stock management, and upheld company standards and COVID safety procedures.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <section class="card reveal" style="margin-top:16px">
-          <h2>Selected Skills</h2>
-          <div class="skills" style="margin-top:8px">
-            <div class="skill">Customer Service</div>
-            <div class="skill">Communication</div>
-            <div class="skill">Teamwork</div>
-            <div class="skill">Project Management</div>
-            <div class="skill">Organization</div>
-            <div class="skill">Time Management</div>
-            <div class="skill">Accessibility Research</div>
-            <div class="skill">Client Relations</div>
-          </div>
-        </section>
+        <div class="ribbon" aria-hidden="true">
+          <div class="tag">Customer Service</div>
+          <div class="tag">Accessibility Research</div>
+          <div class="tag">Project Mgmt</div>
+          <div class="tag">Time Management</div>
+          <div class="tag">Teamwork</div>
+          <div class="tag">Communication</div>
+          <div class="tag">Organization</div>
+        </div>
 
       </div>
 
-      <!-- Right column -->
-      <aside>
-        <div class="card reveal">
-          <div class="stat-grid">
-            <div class="stat">
-              <div class="muted">Years working</div>
-              <h3 id="years">3</h3>
-            </div>
-            <div class="stat">
-              <div class="muted">Roles</div>
-              <h3>6+</h3>
-            </div>
-          </div>
+      <div class="hero-right reveal">
+        <div class="portrait" title="Sadel Sofo portrait">
+          <!-- large portrait image emphasizing style from sample -->
+          <img src="https://images.unsplash.com/photo-1545996124-1b9d7d4b2a4e?q=80&w=1400&auto=format&fit=crop&crop=faces" alt="Sadel portrait">
+        </div>
+      </div>
+    </section>
 
-          <div class="edu" style="margin-top:12px">
-            <h2>Education</h2>
-            <div style="margin-top:8px">
-              <strong>University of Ottawa</strong><div class="muted">Master's degree, Public and International Affairs</div>
-              <div style="height:8px"></div>
-              <strong>Carleton University</strong><div class="muted">Combined honours in Women’s & Gender Studies and African Studies</div>
-            </div>
+    <!-- ABOUT + STATS -->
+    <section class="two-col">
+      <div class="card reveal" id="about">
+        <h2>About me</h2>
+        <p>I am currently pursuing my Master's at the University of Ottawa in Public & International Affairs. My recent role as an Accommodation Research Specialist deepened my understanding of accessible product design and inclusive policy. In retail and client-facing roles I focus on clear communication, efficiency, and creating welcoming customer experiences.</p>
+
+        <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="card" style="padding:12px">
+            <strong>Availability</strong>
+            <div class="muted" style="margin-top:8px">Part-time / Contract</div>
+          </div>
+          <div class="card" style="padding:12px">
+            <strong>Location</strong>
+            <div class="muted" style="margin-top:8px">Ottawa, Ontario, Canada</div>
           </div>
         </div>
 
-        <div class="card reveal" style="margin-top:16px">
-          <h2>Contact</h2>
-          <div class="contact">
-            <a href="mailto:contact@example.com"><i class="fa fa-envelope"></i> contact@example.com</a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i> linkedin.com/in/sadel-sofo</a>
-            <a href="#" onclick="downloadPDF()"><i class="fa fa-download"></i> Download Résumé (PDF)</a>
-            <button class="cta" onclick="scrollToSection('about')"><i class="fa fa-comment"></i> Message</button>
-          </div>
+        <h3 style="margin-top:14px">Selected highlights</h3>
+        <ul style="margin-top:10px;color:var(--muted);line-height:1.8">
+          <li>Conducted in-depth accommodation & accessibility research for Magnify Access Inc.</li>
+          <li>3+ years experience in customer-facing roles across retail and client services.</li>
+          <li>Strong track record of collaboration, organization, and delivering polished stakeholder reports.</li>
+        </ul>
+      </div>
+
+      <aside class="card reveal">
+        <h2>Statistics</h2>
+        <div class="stats">
+          <div class="stat"><div class="muted">Completed projects</div><h4>120+</h4></div>
+          <div class="stat"><div class="muted">Client satisfaction</div><h4>95%</h4></div>
+          <div class="stat"><div class="muted">Years experience</div><h4>3+</h4></div>
         </div>
 
-        <div class="card reveal" style="margin-top:16px">
-          <h2>Languages & Endorsements</h2>
-          <div style="margin-top:8px">
-            <div class="muted">English — Professional</div>
-            <div style="height:8px"></div>
-            <div class="muted">1 endorsement in Customer Satisfaction</div>
+        <h3 style="margin-top:16px">Education snapshot</h3>
+        <div style="display:flex;gap:8px;flex-direction:column;margin-top:8px">
+          <div style="display:flex;gap:10px;align-items:center">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop" alt="uOttawa campus" style="width:64px;height:44px;border-radius:8px;object-fit:cover">
+            <div>
+              <strong>University of Ottawa</strong>
+              <div class="muted">Master's — Public & International Affairs</div>
+            </div>
           </div>
+
+          <div style="display:flex;gap:10px;align-items:center">
+            <img src="https://images.unsplash.com/photo-1526481280698-0a3e5f7f1d9b?q=80&w=600&auto=format&fit=crop" alt="carleton" style="width:64px;height:44px;border-radius:8px;object-fit:cover">
+            <div>
+              <strong>Carleton University</strong>
+              <div class="muted">Combined honours — Women’s & Gender Studies & African Studies</div>
+            </div>
+          </div>
+
         </div>
+
       </aside>
-    </div>
+    </section>
 
-    <footer>
-      <div class="muted">© <span id="year"></span> Sadel Sofo — Designed & built with care. <span style="display:block;margin-top:8px">Replace placeholder images and contact details before publishing.</span></div>
+    <!-- PROJECTS (A LOT of images) -->
+    <section id="projects" class="projects">
+      <h2 class="reveal">Projects</h2>
+      <p class="reveal" style="color:var(--muted);margin-top:8px">A curated selection of work, research, and practical outcomes — visuals included.</p>
+
+      <div class="projects-grid reveal" style="margin-top:14px">
+        <!-- 9 sample project images -->
+        <div class="project"><img src="https://images.unsplash.com/photo-1521790366064-7986c2920216?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Accessibility Report</strong></div></div>
+        <div class="project"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Client Services Dashboard</strong></div></div>
+        <div class="project"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Community Engagement Plan</strong></div></div>
+
+        <div class="project"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Research Visualization</strong></div></div>
+        <div class="project"><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Policy Brief</strong></div></div>
+        <div class="project"><img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Retail Project: Floor Layout</strong></div></div>
+
+        <div class="project"><img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>User Journey Mapping</strong></div></div>
+        <div class="project"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Presentation Deck</strong></div></div>
+        <div class="project"><img src="https://images.unsplash.com/photo-1531497865146-3f2b725a70d7?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Training Materials</strong></div></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal">
+      <h2 style="margin-top:28px">Experience</h2>
+      <div class="timeline">
+        <div class="exp-item card">
+          <img class="logo" src="https://images.unsplash.com/photo-1584467735877-6ef0b1ab7f0a?q=80&w=800&auto=format&fit=crop" alt="Dollarama logo">
+          <div class="exp-body">
+            <h3>Sales Associate — Dollarama L.P.</h3>
+            <div class="muted">Feb 2023 — Present · Orleans, ON</div>
+            <p style="margin-top:8px;color:var(--muted)">Provide excellent customer service, perform cash handling, assist with opening/closing, and maintain a tidy sales environment.</p>
+          </div>
+        </div>
+
+        <div class="exp-item card">
+          <img class="logo" src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=800&auto=format&fit=crop" alt="Magnify Access">
+          <div class="exp-body">
+            <h3>Accommodation Research Specialist — Magnify Access Inc.</h3>
+            <div class="muted">Jan 2024 — Apr 2024 · Toronto, ON</div>
+            <p style="margin-top:8px;color:var(--muted)">Researched accessibility & accommodation trends and collaborated with product teams to shape accessible solutions and recommendations.</p>
+          </div>
+        </div>
+
+        <div class="exp-item card">
+          <img class="logo" src="https://images.unsplash.com/photo-1517244683843-3a68aef5e13e?q=80&w=800&auto=format&fit=crop" alt="Laura Canada">
+          <div class="exp-body">
+            <h3>Client Services Coordinator — Laura Canada</h3>
+            <div class="muted">Feb 2023 — Feb 2024 · Ottawa, ON</div>
+            <p style="margin-top:8px;color:var(--muted)">Managed customer inquiries, prepared merchandise and supported front-of-house operations.</p>
+          </div>
+        </div>
+
+        <!-- more items with images -->
+        <div class="exp-item card">
+          <img class="logo" src="https://images.unsplash.com/photo-1520975698516-0636c1c3ce3b?q=80&w=800&auto=format&fit=crop" alt="The Children's Place">
+          <div class="exp-body">
+            <h3>Part Time Sales Associate — The Children's Place</h3>
+            <div class="muted">Sep 2022 — Jul 2023 · Orleans, ON</div>
+          </div>
+        </div>
+
+        <div class="exp-item card">
+          <img class="logo" src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=800&auto=format&fit=crop" alt="The Shoe Company">
+          <div class="exp-body">
+            <h3>Part Time Sales Associate — The Shoe Company</h3>
+            <div class="muted">Oct 2021 — Aug 2022 · Ajax, ON</div>
+          </div>
+        </div>
+
+        <div class="exp-item card">
+          <img class="logo" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="The Body Shop">
+          <div class="exp-body">
+            <h3>Part Time Customer Consultant — The Body Shop</h3>
+            <div class="muted">Oct 2020 — Aug 2021 · Ottawa, ON</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION (images for each) -->
+    <section id="education" class="reveal">
+      <h2 style="margin-top:28px">Education</h2>
+      <div class="education">
+        <div class="card edu-card">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="uOttawa campus">
+          <div>
+            <strong>University of Ottawa</strong>
+            <div class="muted">Master's degree — Public & International Affairs</div>
+            <p style="margin-top:8px;color:var(--muted)">Graduate studies focusing on public policy, international frameworks, and inclusive practice.</p>
+          </div>
+        </div>
+
+        <div class="card edu-card">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="Carleton">
+          <div>
+            <strong>Carleton University</strong>
+            <div class="muted">Combined honours — Women’s & Gender Studies & African Studies</div>
+            <p style="margin-top:8px;color:var(--muted)">Interdisciplinary studies with a focus on social justice, critical thought, and research methods.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <h2 style="margin-top:28px">Contact</h2>
+      <div class="card contact">
+        <div style="flex:1">
+          <p class="muted">Reach out for collaboration, research inquiries, or contract work.</p>
+          <div style="margin-top:8px"><strong>Email</strong><div class="muted">contact@example.com</div></div>
+          <div style="margin-top:8px"><strong>Location</strong><div class="muted">Ottawa, Ontario, Canada</div></div>
+        </div>
+
+        <div style="width:280px;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <div class="socials">
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i>&nbsp;LinkedIn</a>
+            <a href="#"><i class="fa fa-envelope"></i>&nbsp;Email</a>
+          </div>
+          <div style="margin-top:12px;font-size:13px;color:var(--muted)">Download CV / View on LinkedIn</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <div class="muted">© <span id="year"></span> Sadel Sofo • Built with attention to accessibility & polish. Replace placeholder images and contact details before publishing.</div>
     </footer>
   </div>
 
   <script>
-    // small utilities
+    // Reveal on scroll
     function revealOnScroll(){
       const els = document.querySelectorAll('.reveal');
       const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}
-        })
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target) } });
       },{threshold:0.12});
       els.forEach(el=>obs.observe(el));
     }
+
     function scrollToSection(id){
       const el = document.getElementById(id);
       if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
     }
 
-    // fake PDF download (replace with real file or server link)
-    function downloadPDF(){
-      alert('This will download the résumé PDF. Replace the placeholder link in the code with your actual file URL.');
+    function downloadResume(){
+      alert('Replace this function with a real PDF link or trigger.');
     }
 
-    // Fill dynamic elements
+    // lazy preloading many images for polish
+    function preloadImages(urls){ urls.forEach(u=>{ const i=new Image(); i.src=u }); }
+    preloadImages([
+      'https://images.unsplash.com/photo-1521790366064-7986c2920216?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1200&auto=format&fit=crop'
+    ]);
+
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // small animation + reveal
     revealOnScroll();
-
-    // accessible focus styles for keyboard users
-    document.addEventListener('keydown',(e)=>{
-      if(e.key === 'Tab') document.body.classList.add('show-focus');
-    });
   </script>
 </body>
 </html>
