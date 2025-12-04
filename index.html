@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sadel Sofo — Professional Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome (uses `fa fa-...` classes) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    :root{
+      --bg: #0f1724; /* deep navy */
+      --panel: rgba(255,255,255,0.04);
+      --accent: #6ee7b7; /* soft green */
+      --muted: #9aa4b2;
+      --glass: rgba(255,255,255,0.03);
+      --card-radius: 16px;
+      color-scheme: dark;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071024 0%, #091226 60%);color:#e6eef6}
+
+    /* Container */
+    .wrap{max-width:1100px;margin:40px auto;padding:28px}
+
+    /* Header */
+    header{display:flex;gap:20px;align-items:center}
+    .avatar{
+      width:130px;height:130px;border-radius:18px;overflow:hidden;flex:0 0 130px;box-shadow:0 8px 30px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(135deg,#0b1220, #0f253a);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .title{
+      flex:1
+    }
+    .title h1{margin:0;font-size:22px;letter-spacing:-0.2px}
+    .title p{margin:6px 0 0;color:var(--muted)}
+    .meta{display:flex;gap:12px;align-items:center;margin-top:10px}
+    .pill{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);display:inline-flex;gap:8px;align-items:center}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns: 2fr 1fr;gap:22px;margin-top:28px}
+
+    /* Card */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:var(--card-radius);box-shadow:0 6px 20px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    h2{margin:0 0 12px;font-size:18px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* About */
+    .about p{line-height:1.6;color:#cfdbea}
+
+    /* Experience timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .item{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start}
+    .item .logo{width:46px;height:46px;border-radius:10px;background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:20px}
+    .item h3{margin:0;font-size:15px}
+    .item .meta{margin-top:6px}
+    .item .period{color:var(--muted);font-size:13px}
+    .item p{margin:8px 0 0;color:#ccd9e6}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:12px;font-size:13px;color:var(--muted)}
+
+    /* Right column */
+    .stat-grid{display:flex;gap:12px}
+    .stat{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;text-align:center}
+    .stat h3{margin:6px 0 0;font-size:20px;color:var(--accent)}
+    .edu{margin-top:12px}
+    .contact{display:flex;flex-direction:column;gap:10px}
+    .contact a, .contact button{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e7f0fb;text-decoration:none}
+
+    /* Footer */
+    footer{margin-top:32px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      header{flex-direction:row}
+      .avatar{width:110px;height:110px}
+    }
+
+    /* Simple reveal animations */
+    .reveal{opacity:0;transform:translateY(12px);transition:all 600ms cubic-bezier(.2,.9,.3,1)}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Fancy header action button */
+    .cta{background:linear-gradient(90deg,var(--accent),#7dd3fc);color:#021016;padding:10px 14px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
+
+    /* subtle hover */
+    a:hover, button:hover{transform:translateY(-2px);transition:transform 180ms}
+
+    /* experience bullets styling */
+    .bullets{margin:8px 0 0;list-style:none;padding:0;display:grid;gap:6px}
+    .bullets li{padding-left:18px;position:relative}
+    .bullets li:before{content:'\f00c';font-family:FontAwesome;position:absolute;left:0;top:0;color:var(--accent);font-size:12px}
+
+    /* tiny company tags */
+    .company{color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <!-- Header -->
+    <header class="reveal">
+      <div class="avatar" aria-hidden="true">
+        <!-- Replace the src with Sadel's real headshot -->
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&crop=faces" alt="Sadel Sofo headshot">
+      </div>
+      <div class="title">
+        <h1>Sadel Sofo <span style="font-weight:600;color:var(--muted);font-size:15px">— Graduate Student, University of Ottawa</span></h1>
+        <div class="meta">
+          <div class="pill"><i class="fa fa-map-marker"></i> Ottawa, Ontario, Canada</div>
+          <div class="pill"><i class="fa fa-envelope"></i> <a href="mailto:contact@example.com" style="color:inherit;text-decoration:none">contact@example.com</a></div>
+          <div class="pill"><i class="fa fa-user"></i> She / Her</div>
+        </div>
+      </div>
+      <div style="margin-left:18px;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+        <button class="cta" onclick="scrollToSection('contact')"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact</button>
+        <a class="pill" href="#experience" style="text-decoration:none"><i class="fa fa-briefcase"></i> View Experience</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Left column -->
+      <div>
+        <section class="card about reveal" id="about">
+          <h2>About</h2>
+          <p>
+            Sadel Sofo is a dedicated graduate student at the University of Ottawa with experience in client services, research on accessibility, and retail operations. She is passionate about inclusive design, customer-centred service, and collaborative teamwork. Sadel brings a strong work ethic, excellent communication, and project organization skills to every role she undertakes.
+          </p>
+        </section>
+
+        <section class="card reveal" id="experience" style="margin-top:16px">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <!-- Dollarama -->
+            <div class="item">
+              <div class="logo"><i class="fa fa-shopping-cart"></i></div>
+              <div>
+                <h3>Sales Associate — Dollarama L.P.</h3>
+                <div class="company">Feb 2023 — Present · Orleans, ON (On-site)</div>
+                <p>
+                  - Greet and acknowledge customers while providing excellent customer service; process transactions and cash handling; participate in opening/closing duties; maintain tidy sales floor; collaborate with team members to complete tasks.
+                </p>
+                <div class="skills" style="margin-top:8px">
+                  <div class="skill">Customer Service</div>
+                  <div class="skill">Time Management</div>
+                  <div class="skill">Flexible Approach</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Magnify Access -->
+            <div class="item">
+              <div class="logo"><i class="fa fa-universal-access"></i></div>
+              <div>
+                <h3>Accommodation Research Specialist — Magnify Access Inc.</h3>
+                <div class="company">Jan 2024 — Apr 2024 · Toronto, ON (Contract)</div>
+                <p>
+                  Conducted in-depth research on accessibility and accommodation trends; collaborated with product teams to inform accessible solutions; translated findings into actionable recommendations and presented reports to stakeholders.
+                </p>
+                <div class="skills">
+                  <div class="skill">Project Management</div>
+                  <div class="skill">Communication</div>
+                  <div class="skill">Organization</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Laura Canada -->
+            <div class="item">
+              <div class="logo"><i class="fa fa-users"></i></div>
+              <div>
+                <h3>Client Services Coordinator — Laura Canada</h3>
+                <div class="company">Feb 2023 — Feb 2024 · Ottawa, ON (On-site)</div>
+                <p>
+                  Handled customer inquiries and transactions, managed merchandise and stocking, and supported daily front-of-house activities while ensuring high levels of customer satisfaction.
+                </p>
+              </div>
+            </div>
+
+            <!-- The Children's Place -->
+            <div class="item">
+              <div class="logo"><i class="fa fa-child"></i></div>
+              <div>
+                <h3>Part Time Sales Associate — The Children's Place</h3>
+                <div class="company">Sep 2022 — Jul 2023 · Orleans, ON</div>
+                <p>
+                  Assisted customers, maintained stock levels and merchandising standards, and provided fast, friendly service at the cashier.
+                </p>
+              </div>
+            </div>
+
+            <!-- The Shoe Company -->
+            <div class="item">
+              <div class="logo"><i class="fa fa-shopping-bag"></i></div>
+              <div>
+                <h3>Part Time Sales Associate — The Shoe Company</h3>
+                <div class="company">Oct 2021 — Aug 2022 · Ajax, ON</div>
+                <p>
+                  Built customer relationships, handled transactions and inventory tasks, and supported merchandising and floor layout.
+                </p>
+              </div>
+            </div>
+
+            <!-- The Body Shop -->
+            <div class="item">
+              <div class="logo"><i class="fa fa-leaf"></i></div>
+              <div>
+                <h3>Part Time Customer Consultant — The Body Shop</h3>
+                <div class="company">Oct 2020 — Aug 2021 · Ottawa, ON</div>
+                <p>
+                  Assisted customers with product needs, supported stock management, and upheld company standards and COVID safety procedures.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="card reveal" style="margin-top:16px">
+          <h2>Selected Skills</h2>
+          <div class="skills" style="margin-top:8px">
+            <div class="skill">Customer Service</div>
+            <div class="skill">Communication</div>
+            <div class="skill">Teamwork</div>
+            <div class="skill">Project Management</div>
+            <div class="skill">Organization</div>
+            <div class="skill">Time Management</div>
+            <div class="skill">Accessibility Research</div>
+            <div class="skill">Client Relations</div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right column -->
+      <aside>
+        <div class="card reveal">
+          <div class="stat-grid">
+            <div class="stat">
+              <div class="muted">Years working</div>
+              <h3 id="years">3</h3>
+            </div>
+            <div class="stat">
+              <div class="muted">Roles</div>
+              <h3>6+</h3>
+            </div>
+          </div>
+
+          <div class="edu" style="margin-top:12px">
+            <h2>Education</h2>
+            <div style="margin-top:8px">
+              <strong>University of Ottawa</strong><div class="muted">Master's degree, Public and International Affairs</div>
+              <div style="height:8px"></div>
+              <strong>Carleton University</strong><div class="muted">Combined honours in Women’s & Gender Studies and African Studies</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="margin-top:16px">
+          <h2>Contact</h2>
+          <div class="contact">
+            <a href="mailto:contact@example.com"><i class="fa fa-envelope"></i> contact@example.com</a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i> linkedin.com/in/sadel-sofo</a>
+            <a href="#" onclick="downloadPDF()"><i class="fa fa-download"></i> Download Résumé (PDF)</a>
+            <button class="cta" onclick="scrollToSection('about')"><i class="fa fa-comment"></i> Message</button>
+          </div>
+        </div>
+
+        <div class="card reveal" style="margin-top:16px">
+          <h2>Languages & Endorsements</h2>
+          <div style="margin-top:8px">
+            <div class="muted">English — Professional</div>
+            <div style="height:8px"></div>
+            <div class="muted">1 endorsement in Customer Satisfaction</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="muted">© <span id="year"></span> Sadel Sofo — Designed & built with care. <span style="display:block;margin-top:8px">Replace placeholder images and contact details before publishing.</span></div>
+    </footer>
+  </div>
+
+  <script>
+    // small utilities
+    function revealOnScroll(){
+      const els = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}
+        })
+      },{threshold:0.12});
+      els.forEach(el=>obs.observe(el));
+    }
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // fake PDF download (replace with real file or server link)
+    function downloadPDF(){
+      alert('This will download the résumé PDF. Replace the placeholder link in the code with your actual file URL.');
+    }
+
+    // Fill dynamic elements
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // small animation + reveal
+    revealOnScroll();
+
+    // accessible focus styles for keyboard users
+    document.addEventListener('keydown',(e)=>{
+      if(e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>
