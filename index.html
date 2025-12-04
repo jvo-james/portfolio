@@ -4,389 +4,386 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sadel Sofo — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome (fa fa-...) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root{
-      --bg:#071026; --bg-2:#081a2e; --card:#071826; --glass:rgba(255,255,255,0.03);
-      --accent:#ff6b61; --accent-2:#7dd3fc; --muted:#9fb0c8; --radius:16px; --maxW:1200px;
-      --text-sm:13px; --text-md:15px; --text-lg:20px;
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --bg:#0f1720; /* deep navy */
+      --card:#0f222a;
+      --muted:#9aa8b0;
+      --accent:#ff6b5f; /* coral */
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --gap:24px;
+      --fw-heading:700;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:#e9f7ff}
-    a{color:inherit}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #071018 100%);
+      color:#e6eef3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:40px;
+    }
 
-    .wrap{max-width:var(--maxW);margin:28px auto;padding:20px}
+    /* container */
+    .wrap{max-width:1150px;margin:0 auto;}
 
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:10px 0;margin-bottom:28px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,#0e2b39,#103f54);display:flex;align-items:center;justify-content:center;font-weight:800}
-    .brand h1{margin:0;font-size:16px}
-    nav{display:flex;gap:10px}
-    nav a{font-size:var(--text-sm);color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
-    nav a:hover{background:rgba(255,255,255,0.02);color:#fff}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff9b88);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;box-shadow:0 6px 20px rgba(255,107,95,0.12)}
+    .brand h1{margin:0;font-size:18px;letter-spacing:0.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-weight:600}
+    nav a:hover{color:var(--accent)}
 
-    /* HERO - clean, minimal text */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid var(--glass);padding:20px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(1,6,15,0.6)}
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:18px;box-shadow:0 12px 40px rgba(2,6,23,0.6);}
+    .intro-left{padding:10px}
+    .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--glass);color:var(--accent);font-weight:600;font-size:12px;margin-bottom:18px}
+    h2{font-family:Poppins,Inter;margin:8px 0 10px;font-weight:700;font-size:40px;line-height:1}
+    h3{margin:0;color:var(--muted);font-weight:600}
+    .hero-cta{margin-top:22px;display:flex;gap:14px}
+    .btn{padding:10px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn-primary{background:var(--accent);color:white;box-shadow:0 10px 30px rgba(255,107,95,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
-    .intro h2{font-size:22px;margin:0;letter-spacing:-0.3px}
-    .intro h3{font-size:18px;margin:6px 0 0;color:var(--muted);font-weight:600}
-    .intro p{color:var(--muted);font-size:var(--text-sm);margin-top:10px;max-width:560px}
+    /* right card image */
+    .hero-card{position:relative;min-height:360px;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:inset 0 -60px 100px rgba(0,0,0,0.5);}
+    .avatar{width:76%;height:76%;background:#123;border-radius:12px;display:block;object-fit:cover;box-shadow:0 20px 40px rgba(3,6,12,0.6);transform:translateY(0);}
 
-    .cta{margin-top:14px;display:flex;gap:10px}
-    .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700;font-size:14px}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),#ff8b7f);color:#021016}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+    /* small badges */
+    .chips{display:flex;gap:10px;margin-top:18px}
+    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;font-weight:600;color:var(--muted);font-size:13px}
 
-    /* portrait box (placeholder images expected) */
-    .portrait-wrap{position:relative;height:420px;border-radius:18px;overflow:hidden}
-    .portrait{width:100%;height:100%;object-fit:cover;display:block;transform-origin:center;transition:transform 500ms cubic-bezier(.2,.9,.3,1)}
-    .portrait-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:320px;height:320px;border-radius:999px;padding:6px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:0 25px 60px rgba(2,6,23,0.6)}
-    .portrait-frame img{width:100%;height:100%;border-radius:999px;object-fit:cover}
+    /* Sections */
+    section{margin-top:44px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.012), transparent);padding:20px;border-radius:14px;box-shadow:0 6px 24px rgba(2,6,23,0.6);}
+    .card h4{margin:0 0 6px}
+    .muted{color:var(--muted);font-size:14px}
 
-    /* decorative rings */
-    .ring{position:absolute;border-radius:999px;border:3px solid rgba(255,107,97,0.08);width:520px;height:520px;right:-80px;top:-80px;filter:blur(2px);transform:rotate(8deg)}
-    .ring.small{width:320px;height:320px;right:20px;top:30px;border-color:rgba(125,211,252,0.06)}
+    /* Projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .project{position:relative;border-radius:12px;overflow:hidden;height:180px;background:linear-gradient(180deg,#0b171b,#071018);display:flex;align-items:flex-end;padding:14px}
+    .project .thumb{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.32) contrast(.9)}
+    .project .meta{position:relative;z-index:2;color:white}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);font-weight:600;margin-bottom:6px}
 
-    /* skill ribbon */
-    .ribbon{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-    .chip{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:700;font-size:12px}
+    /* Experience list */
+    .exp-list{display:flex;flex-direction:column;gap:12px}
+    .exp-item{display:flex;align-items:center;gap:14px;padding:12px;border-radius:12px;background:var(--card);}
+    .exp-icon{width:62px;height:62px;border-radius:10px;background:linear-gradient(135deg,#11222a,#0b1b22);display:flex;align-items:center;justify-content:center;font-size:22px}
+    .exp-main{flex:1}
+    .exp-actions{margin-left:12px}
+    .details-btn{background:transparent;color:var(--accent);border:1px solid rgba(255,107,95,0.12);padding:8px 10px;border-radius:10px;cursor:pointer}
 
-    /* projects gallery - many images placeholders */
-    .projects{margin-top:22px}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .grid img{width:100%;height:160px;object-fit:cover;border-radius:10px;display:block;transition:transform 300ms, box-shadow 300ms}
-    .grid img:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(3,6,12,0.6);display:flex;align-items:center;justify-content:center;z-index:60;opacity:0;pointer-events:none;transition:opacity .28s ease}
+    .modal-backdrop.show{opacity:1;pointer-events:auto}
+    .modal{width:min(760px,95%);background:linear-gradient(180deg,#071419,#0b1f28);padding:22px;border-radius:16px;box-shadow:0 40px 120px rgba(2,6,23,0.7);transform:translateY(30px);opacity:0;transition:all .32s cubic-bezier(.2,.9,.28,1)}
+    .modal-backdrop.show .modal{transform:translateY(0);opacity:1}
+    .modal h3{margin-top:0}
+    .close-x{position:absolute;right:18px;top:18px;border-radius:8px;background:rgba(255,255,255,0.02);border:0;padding:8px;color:var(--muted)}
 
-    /* experience - compact with details modal */
-    .experience{margin-top:22px}
-    .exp-list{display:flex;flex-direction:column;gap:10px}
-    .exp-row{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;background:linear-gradient(180deg, transparent, rgba(255,255,255,0.01));border:1px solid var(--glass)}
-    .exp-row img{width:64px;height:64px;object-fit:cover;border-radius:8px}
-    .exp-meta{flex:1}
-    .exp-meta h4{margin:0;font-size:15px}
-    .exp-meta .sub{color:var(--muted);font-size:13px;margin-top:6px}
-    .details-btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;cursor:pointer}
+    /* contact */
+    footer{margin-top:44px;padding:26px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);display:flex;justify-content:space-between;align-items:center}
+    .socials a{margin-left:12px;color:var(--muted);font-size:18px}
 
-    /* modal (popup) */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,12,0.6);display:none;align-items:center;justify-content:center;z-index:90}
-    .modal{width:760px;max-width:94%;background:linear-gradient(180deg,#071826,#052235);border-radius:14px;padding:18px;border:1px solid var(--glass);box-shadow:0 30px 80px rgba(2,6,23,0.7);transform:translateY(20px) scale(0.98);opacity:0;transition:all 320ms}
-    .modal.show{transform:none;opacity:1}
-    .modal .m-head{display:flex;align-items:center;gap:12px}
-    .modal .m-body{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6}
-    .close-x{margin-left:auto;background:transparent;border:none;color:var(--muted);cursor:pointer}
+    /* small screens */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      body{padding:20px}
+    }
+    @media (max-width:640px){
+      .projects-grid{grid-template-columns:1fr}
+      nav a{margin-left:10px;font-size:14px}
+      h2{font-size:30px}
+      .hero{padding:18px}
+    }
 
-    /* education images grid */
-    .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-    .edu-card{padding:10px;border-radius:12px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.01));border:1px solid var(--glass);display:flex;gap:10px;align-items:center}
-    .edu-card img{width:88px;height:60px;object-fit:cover;border-radius:8px}
+    /* animations */
+    .fade-in{opacity:0;transform:translateY(6px);animation:fadeUp .8s forwards}
+    .stagger{--i:1}
+    .stagger[data-i="1"]{animation-delay:.05s}
+    .stagger[data-i="2"]{animation-delay:.12s}
+    .stagger[data-i="3"]{animation-delay:.18s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
 
-    /* many icons */
-    .icon-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .icon-row .icon{display:inline-flex;align-items:center;gap:8px;padding:8px;border-radius:10px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
+    /* small flourish */
+    .accent-line{height:4px;width:72px;background:linear-gradient(90deg,var(--accent),#ff9b88);border-radius:99px;margin:18px 0}
 
-    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* responsive */
-    @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr 340px}.portrait-frame{width:280px;height:280px}}
-    @media (max-width:820px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.edu-grid{grid-template-columns:1fr}.icon-row{justify-content:flex-start}}
-
-    /* reveal animation */
-    .reveal{opacity:0;transform:translateY(12px);transition:all 600ms cubic-bezier(.2,.9,.3,1)}
-    .reveal.show{opacity:1;transform:none}
-
-    /* small text sizes to keep minimal text */
-    h2,h3,h4{margin:0}
-    p,li{font-size:var(--text-sm)}
-
-    /* micro animations */
-    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
-    .float{animation:floaty 6s ease-in-out infinite}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header class="reveal">
+    <header>
       <div class="brand">
         <div class="logo">SS</div>
         <div>
           <h1>Sadel Sofo</h1>
-          <div style="color:var(--muted);font-size:12px">Graduate Student — University of Ottawa</div>
+          <div class="muted" style="font-size:13px">She/Her • Graduate Student — University of Ottawa</div>
         </div>
       </div>
-      <nav>
+      <nav aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="card intro reveal" id="about">
-          <h2>Hi — I’m Sadel <span style="color:var(--accent);">.</span></h2>
-          <h3>Accessibility Research & Client Experience</h3>
-          <p>Focused on practical accessibility, clear communication, and polished deliverables. I keep copy minimal — visuals tell the story.</p>
-
-          <div class="chip-row">
-            <div class="ribbon">
-              <span class="chip">Research</span>
-              <span class="chip">Customer Service</span>
-              <span class="chip">Project Mgmt</span>
-              <span class="chip">Accessibility</span>
-            </div>
-          </div>
-
-          <div class="cta">
-            <button class="btn btn-primary" onclick="scrollTo('#contact')"><i class="fa fa-paper-plane"></i>&nbsp;Contact</button>
-            <button class="btn btn-ghost" onclick="scrollTo('#projects')"><i class="fa fa-image"></i>&nbsp;Gallery</button>
-            <button class="btn btn-ghost" onclick="openResume()"><i class="fa fa-download"></i>&nbsp;Resume</button>
-          </div>
-
-          <div class="icon-row" aria-hidden="true">
-            <div class="icon"><i class="fa fa-check"></i> Reliable</div>
-            <div class="icon"><i class="fa fa-users"></i> Teamwork</div>
-            <div class="icon"><i class="fa fa-clock-o"></i> Punctual</div>
-            <div class="icon"><i class="fa fa-universal-access"></i> Accessibility</div>
-            <div class="icon"><i class="fa fa-comments"></i> Clear Reports</div>
-            <div class="icon float"><i class="fa fa-star"></i> Detail</div>
-          </div>
+    <!-- HERO -->
+    <main class="hero" role="main">
+      <div class="intro-left">
+        <span class="eyebrow fade-in stagger" data-i="1">Graduate Student</span>
+        <h2 class="fade-in stagger" data-i="2">Hi, I’m <span style="color:var(--accent)">Sadel</span>.</h2>
+        <h3 class="fade-in stagger" data-i="3">Public & International Affairs • Accessibility Research</h3>
+        <div class="chips fade-in" style="margin-top:16px">
+          <span class="chip"><i class="fa fa-briefcase"></i>&nbsp;Research</span>
+          <span class="chip"><i class="fa fa-user-friends"></i>&nbsp;Customer Service</span>
+          <span class="chip"><i class="fa fa-clock"></i>&nbsp;Time Management</span>
         </div>
 
-        <div class="portrait-wrap reveal">
-          <div class="ring"></div>
-          <div class="ring small"></div>
-          <div class="portrait-frame float" id="portraitFrame">
-            <!-- Replace src with your own image files -->
-            <img id="portraitImg" src="assets/portrait.jpg" alt="Sadel portrait">
-          </div>
+        <div class="hero-cta fade-in" style="margin-top:18px">
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Contact</button>
+          <a class="btn btn-ghost" href="#experience"><i class="fa fa-briefcase"></i>&nbsp;&nbsp;Experience</a>
         </div>
-      </section>
 
-      <!-- PROJECTS (many placeholders) -->
-      <section id="projects" class="projects reveal">
-        <h2 style="font-size:18px">Gallery</h2>
-        <p style="color:var(--muted);margin-top:8px">Visual examples and outcomes. Replace the images in /assets/ with your own photos.</p>
+        <div class="accent-line" aria-hidden="true"></div>
 
-        <div class="grid" style="margin-top:12px">
-          <!-- lots of image placeholders -->
-          <img src="assets/project-01.jpg" alt="project 1">
-          <img src="assets/project-02.jpg" alt="project 2">
-          <img src="assets/project-03.jpg" alt="project 3">
-          <img src="assets/project-04.jpg" alt="project 4">
-          <img src="assets/project-05.jpg" alt="project 5">
-          <img src="assets/project-06.jpg" alt="project 6">
-          <img src="assets/project-07.jpg" alt="project 7">
-          <img src="assets/project-08.jpg" alt="project 8">
-          <img src="assets/project-09.jpg" alt="project 9">
-          <img src="assets/project-10.jpg" alt="project 10">
-          <img src="assets/project-11.jpg" alt="project 11">
-          <img src="assets/project-12.jpg" alt="project 12">
-        </div>
-      </section>
+        <p class="muted" style="max-width:560px">Short, clean, and professional portfolio — minimal text, lots of visuals. Replace the placeholder images with your own.</p>
+      </div>
 
-      <!-- EXPERIENCE with modal popups for descriptions -->
-      <section id="experience" class="experience reveal">
-        <h2 style="font-size:18px">Experience</h2>
-        <div class="exp-list">
-
-          <!-- each row uses a logo image placeholder and a details button -> modal -->
-          <div class="exp-row card">
-            <img src="assets/logo-dollarama.jpg" alt="Dollarama logo">
-            <div class="exp-meta">
-              <h4>Sales Associate — Dollarama L.P.</h4>
-              <div class="sub">Feb 2023 — Present · Orleans, ON</div>
-            </div>
-            <button class="details-btn" data-title="Dollarama — Sales Associate" data-desc="Greet customers, manage transactions and daily cash handling, support opening/closing procedures, and ensure a tidy sales floor. Emphasized teamwork and time management.">Details</button>
-          </div>
-
-          <div class="exp-row card">
-            <img src="assets/logo-magnify.jpg" alt="Magnify Access logo">
-            <div class="exp-meta">
-              <h4>Accommodation Research Specialist — Magnify Access Inc.</h4>
-              <div class="sub">Jan 2024 — Apr 2024 · Toronto, ON</div>
-            </div>
-            <button class="details-btn" data-title="Magnify Access — Research Specialist" data-desc="Conducted in-depth research on accommodation trends and accessibility tech, collaborated with product teams to inform accessible design, analyzed data and presented findings to stakeholders.">Details</button>
-          </div>
-
-          <div class="exp-row card">
-            <img src="assets/logo-laura.jpg" alt="Laura Canada logo">
-            <div class="exp-meta">
-              <h4>Client Services Coordinator — Laura Canada</h4>
-              <div class="sub">Feb 2023 — Feb 2024 · Ottawa, ON</div>
-            </div>
-            <button class="details-btn" data-title="Laura Canada — Client Services" data-desc="Managed customer inquiries, prepared merchandise and handled front-of-house tasks, processed exchanges/returns, and supported day-to-day store ops.">Details</button>
-          </div>
-
-          <!-- more rows (minimal text) -->
-          <div class="exp-row card">
-            <img src="assets/logo-children.jpg" alt="Children's Place logo">
-            <div class="exp-meta">
-              <h4>Part Time Sales Associate — The Children's Place</h4>
-              <div class="sub">Sep 2022 — Jul 2023</div>
-            </div>
-            <button class="details-btn" data-title="Children's Place" data-desc="Assisted customers, maintained stock & merchandising, and provided quick friendly service at checkout.">Details</button>
-          </div>
-
-          <div class="exp-row card">
-            <img src="assets/logo-shoe.jpg" alt="Shoe Company logo">
-            <div class="exp-meta">
-              <h4>Part Time Sales Associate — The Shoe Company</h4>
-              <div class="sub">Oct 2021 — Aug 2022</div>
-            </div>
-            <button class="details-btn" data-title="The Shoe Company" data-desc="Engaged customers, recommended products, processed transactions, and supported merchandising and inventory.">Details</button>
-          </div>
-
-          <div class="exp-row card">
-            <img src="assets/logo-bodyshop.jpg" alt="Body Shop logo">
-            <div class="exp-meta">
-              <h4>Part Time Customer Consultant — The Body Shop</h4>
-              <div class="sub">Oct 2020 — Aug 2021</div>
-            </div>
-            <button class="details-btn" data-title="The Body Shop" data-desc="Guided customers on products, supported stock management, and upheld store standards and COVID procedures.">Details</button>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- EDUCATION with many images -->
-      <section id="education" class="reveal">
-        <h2 style="font-size:18px;margin-top:22px">Education</h2>
-        <p style="color:var(--muted);margin-top:6px">Each school has a visual tile — replace the images with campus or graduation photos.</p>
-        <div class="edu-grid">
-          <div class="edu-card card">
-            <img src="assets/edu-uottawa.jpg" alt="uOttawa">
-            <div>
-              <strong>University of Ottawa</strong>
-              <div class="muted">Master's — Public & International Affairs</div>
-            </div>
-          </div>
-
-          <div class="edu-card card">
-            <img src="assets/edu-carleton.jpg" alt="Carleton University">
-            <div>
-              <strong>Carleton University</strong>
-              <div class="muted">Combined honours — Women’s & Gender Studies & African Studies</div>
-            </div>
-          </div>
-
-          <div class="edu-card card">
-            <img src="assets/edu-highschool.jpg" alt="High School">
-            <div>
-              <strong>High School</strong>
-              <div class="muted">Top typing competitions — national runner-up</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="reveal">
-        <h2 style="font-size:18px;margin-top:22px">Contact</h2>
-        <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px">
-          <div>
-            <strong>Let's connect</strong>
-            <div class="muted" style="margin-top:8px">Email: <a href="mailto:contact@example.com">contact@example.com</a></div>
-            <div class="muted" style="margin-top:6px">Location: Ottawa, ON — Available for contract work</div>
-          </div>
-          <div style="display:flex;gap:10px;align-items:center">
-            <a class="btn btn-ghost" href="#" onclick="openLinkedIn()"><i class="fa fa-linkedin"></i>&nbsp;LinkedIn</a>
-            <a class="btn btn-primary" href="#" onclick="scrollTo('#projects')"><i class="fa fa-image"></i>&nbsp;View gallery</a>
-          </div>
-        </div>
-      </section>
+      <div class="hero-card fade-in" aria-hidden="true">
+        <!-- Replace src with your portrait image -->
+        <img class="avatar" src="images/portrait.jpg" alt="Sadel Sofo portrait (replace me)"/>
+      </div>
     </main>
 
-    <footer class="reveal">© <span id="year"></span> Sadel Sofo — Portfolio</footer>
-  </div>
-
-  <!-- Modal markup -->
-  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document">
-      <div class="m-head">
-        <h3 id="mTitle">Title</h3>
-        <button class="close-x" aria-label="Close" onclick="closeModal()"><i class="fa fa-times"></i></button>
+    <!-- SERVICES / SKILLS -->
+    <section id="about" class="fade-in" style="margin-top:36px">
+      <div class="grid-3">
+        <div class="card">
+          <h4><i class="fa fa-clipboard-list" style="color:var(--accent);"></i>&nbsp;Key Strengths</h4>
+          <div class="muted">Customer Service • Research • Communication</div>
+        </div>
+        <div class="card">
+          <h4><i class="fa fa-user-cog" style="color:var(--accent);"></i>&nbsp;Focus</h4>
+          <div class="muted">Accessibility research • Stakeholder communication</div>
+        </div>
+        <div class="card">
+          <h4><i class="fa fa-graduation-cap" style="color:var(--accent);"></i>&nbsp;Education</h4>
+          <div class="muted">Master's degree, Public & International Affairs — University of Ottawa</div>
+        </div>
       </div>
-      <div class="m-body" id="mBody">Description...</div>
-      <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end">
-        <button class="btn btn-ghost" onclick="closeModal()">Close</button>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h3 style="margin-bottom:6px">Projects</h3>
+      <div class="muted">A few highlights — click to view.</div>
+
+      <div class="projects-grid">
+        <div class="project card" role="article" tabindex="0">
+          <div class="thumb" style="background-image:url('images/project1.jpg')"></div>
+          <div class="meta">
+            <div class="tag">Research</div>
+            <h4 style="margin:0">Accessibility Trends Report</h4>
+            <div class="muted" style="font-size:13px">Magnify Access Inc. — Jan 2024</div>
+          </div>
+        </div>
+
+        <div class="project card" role="article" tabindex="0">
+          <div class="thumb" style="background-image:url('images/project2.jpg')"></div>
+          <div class="meta">
+            <div class="tag">Collaboration</div>
+            <h4 style="margin:0">Customer Service Playbook</h4>
+            <div class="muted" style="font-size:13px">Dollarama — Ongoing</div>
+          </div>
+        </div>
+
+        <div class="project card" role="article" tabindex="0">
+          <div class="thumb" style="background-image:url('images/project3.jpg')"></div>
+          <div class="meta">
+            <div class="tag">Coordination</div>
+            <h4 style="margin:0">Event & Shift Scheduling Tool</h4>
+            <div class="muted" style="font-size:13px">The Children's Place — 2023</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h3 style="margin-top:28px">Experience</h3>
+      <div class="muted">Click "Details" to expand more information.</div>
+
+      <div class="exp-list" style="margin-top:18px">
+        <!-- Item 1 -->
+        <div class="exp-item">
+          <div class="exp-icon"><i class="fa fa-store fa-2x" style="color:var(--accent)"></i></div>
+          <div class="exp-main">
+            <strong>Dollarama L.P.</strong>
+            <div class="muted">Sales Associate — Feb 2023 to Present • Orleans, ON</div>
+          </div>
+          <div class="exp-actions">
+            <button class="details-btn" data-company="dollarama">Details</button>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="exp-item">
+          <div class="exp-icon"><i class="fa fa-search fa-2x" style="color:var(--accent)"></i></div>
+          <div class="exp-main">
+            <strong>Magnify Access Inc.</strong>
+            <div class="muted">Accommodation Research Specialist — Jan 2024 to Apr 2024 • Toronto, ON</div>
+          </div>
+          <div class="exp-actions">
+            <button class="details-btn" data-company="magnify">Details</button>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="exp-item">
+          <div class="exp-icon"><i class="fa fa-user-tie fa-2x" style="color:var(--accent)"></i></div>
+          <div class="exp-main">
+            <strong>Laura Canada</strong>
+            <div class="muted">Client Services Coordinator — Feb 2023 to Feb 2024 • Ottawa, ON</div>
+          </div>
+          <div class="exp-actions">
+            <button class="details-btn" data-company="laura">Details</button>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="exp-item">
+          <div class="exp-icon"><i class="fa fa-child fa-2x" style="color:var(--accent)"></i></div>
+          <div class="exp-main">
+            <strong>The Children's Place</strong>
+            <div class="muted">Part Time Sales Associate — Sep 2022 to Jul 2023 • Orleans, ON</div>
+          </div>
+          <div class="exp-actions">
+            <button class="details-btn" data-company="child">Details</button>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="exp-item">
+          <div class="exp-icon"><i class="fa fa-shoe-prints fa-2x" style="color:var(--accent)"></i></div>
+          <div class="exp-main">
+            <strong>The Shoe Company</strong>
+            <div class="muted">Part Time Sales Associate — Oct 2021 to Aug 2022 • Ajax, ON</div>
+          </div>
+          <div class="exp-actions">
+            <button class="details-btn" data-company="shoe">Details</button>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="exp-item">
+          <div class="exp-icon"><i class="fa fa-leaf fa-2x" style="color:var(--accent)"></i></div>
+          <div class="exp-main">
+            <strong>The Body Shop</strong>
+            <div class="muted">Part Time Customer Consultant — Oct 2020 to Aug 2021 • Ottawa, ON</div>
+          </div>
+          <div class="exp-actions">
+            <button class="details-btn" data-company="body">Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal (hidden) -->
+    <div id="modal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="close-x" id="closeModal" aria-label="Close dialog"><i class="fa fa-times"></i></button>
+        <h3 id="modal-title">Role details</h3>
+        <div id="modal-body" class="muted" style="margin-top:10px;line-height:1.6">...</div>
+        <div style="margin-top:18px;text-align:right">
+          <button class="btn btn-ghost" id="modal-close">Close</button>
+        </div>
       </div>
     </div>
+
+    <!-- CONTACT / FOOTER -->
+    <footer id="contact">
+      <div>
+        <h3>Have a project? Let’s connect.</h3>
+        <div class="muted" style="margin-top:6px">Email • LinkedIn • GitHub</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="socials">
+          <a href="#" title="Email"><i class="fa fa-envelope"></i></a>
+          <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+          <a href="#" title="GitHub"><i class="fa fa-github"></i></a>
+        </div>
+        <button class="btn btn-primary" onclick="window.location.href='mailto:youremail@example.com'">Email me</button>
+      </div>
+    </footer>
+
   </div>
 
   <script>
-    // small utilities
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); })
-    },{threshold:0.12});
-    revealEls.forEach(el=>io.observe(el));
+    // Simple modal content map. Replace texts as you prefer.
+    const content = {
+      dollarama: `\n<strong>Dollarama L.P. — Sales Associate</strong>\n\nFeb 2023 - Present\n\n• Greet and acknowledge customers while providing excellent customer service.\n• Process customer transactions and daily cash handling.\n• Participate in opening and closing duties and maintain store appearance.\n• Collaborate closely with team members to complete tasks efficiently.\nSkills: Customer Service • Time Management • Flexible Approach\n`,
 
-    // portrait parallax on mousemove (subtle, professional)
-    const frame = document.getElementById('portraitFrame');
-    const img = document.getElementById('portraitImg');
-    if(frame){
-      frame.addEventListener('mousemove', (ev)=>{
-        const r = frame.getBoundingClientRect();
-        const x = (ev.clientX - r.left)/r.width - 0.5;
-        const y = (ev.clientY - r.top)/r.height - 0.5;
-        img.style.transform = `translate3d(${x*6}px, ${y*6}px, 0) scale(1.02)`;
-      });
-      frame.addEventListener('mouseleave', ()=>{ img.style.transform = 'translate3d(0,0,0) scale(1)'; });
+      magnify: `\n<strong>Magnify Access Inc. — Accommodation Research Specialist</strong>\n\nJan 2024 - Apr 2024\n\n• Conducted in-depth research on accessibility and accommodation trends, technologies, and best practices.\n• Collaborated with product teams to inform accessible design.\n• Analyzed data and compiled recommendations into actionable reports.\nSkills: Project Management • Communication • Teamwork • Organization\n`,
+
+      laura: `\n<strong>Laura Canada — Client Services Coordinator</strong>\n\nFeb 2023 - Feb 2024\n\n• Greeted customers and provided appropriate service.\n• Promoted and executed customer orders.\n• Handled inquiries regarding returns/exchanges and assisted at cash desk.\nSkills: Customer Service • Communication • Time Management\n`,
+
+      child: `\n<strong>The Children's Place — Part Time Sales Associate</strong>\n\nSep 2022 - Jul 2023\n\n• Provided fast, friendly service at the register and supported merchandising.\n• Maintained stock levels and organized the sales floor.\nSkills: Customer Service • Communication • Organizational Development\n`,
+
+      shoe: `\n<strong>The Shoe Company — Part Time Sales Associate</strong>\n\nOct 2021 - Aug 2022\n\n• Utilized exceptional customer service skills to greet customers and suggest products.\n• Responsible for daily transactions and store presentation.\nSkills: Sales • Inventory • Customer Relationship Building\n`,
+
+      body: `\n<strong>The Body Shop — Customer Consultant</strong>\n\nOct 2020 - Aug 2021\n\n• Assisted customers with skincare and body care needs.\n• Maintained cleanliness and supported sales by demonstrating products.\nSkills: Customer Support • Product Knowledge\n`
     }
 
-    // modal logic for experience details (styled popup)
-    const modal = document.getElementById('modalBackdrop');
-    const mTitle = document.getElementById('mTitle');
-    const mBody = document.getElementById('mBody');
-    document.querySelectorAll('.details-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const t = btn.getAttribute('data-title');
-        const d = btn.getAttribute('data-desc');
-        openModal(t,d);
-      });
-    });
+    // modal helpers
+    const backdrop = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    const modalTitle = document.getElementById('modal-title');
+    const closeBtn = document.getElementById('closeModal');
+    const modalCloseBtn = document.getElementById('modal-close');
 
-    function openModal(title, desc){
-      mTitle.textContent = title;
-      mBody.textContent = desc;
-      modal.style.display = 'flex';
-      requestAnimationFrame(()=>{
-        modal.querySelector('.modal').classList.add('show');
-        modal.setAttribute('aria-hidden','false');
-      });
-      document.body.style.overflow = 'hidden';
-    }
+    document.querySelectorAll('.details-btn').forEach(btn => {
+      btn.addEventListener('click', (e)=>{
+        const key = btn.getAttribute('data-company');
+        if(!content[key]) return;
+        modalTitle.innerHTML = key.charAt(0).toUpperCase() + key.slice(1) + ' — Details';
+        modalBody.innerHTML = content[key].replace(/\n/g,'<br>');
+        backdrop.classList.add('show');
+        backdrop.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      })
+    })
+
     function closeModal(){
-      const mm = modal.querySelector('.modal');
-      if(mm){ mm.classList.remove('show'); }
-      modal.setAttribute('aria-hidden','true');
-      setTimeout(()=>{ modal.style.display='none'; },320);
+      backdrop.classList.remove('show');
+      backdrop.setAttribute('aria-hidden','true');
       document.body.style.overflow = '';
     }
-    modal.addEventListener('click',(e)=>{ if(e.target===modal) closeModal(); });
-    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeModal(); });
+    closeBtn.addEventListener('click', closeModal);
+    modalCloseBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e)=>{ if(e.target === backdrop) closeModal(); });
+    window.addEventListener('keydown',(e)=>{ if(e.key === 'Escape') closeModal(); });
 
-    // small helpers
-    function scrollTo(selector){ const el=document.querySelector(selector); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
-    function openResume(){ alert('Hook this to your real resume file (e.g. /assets/Sadel_Resume.pdf)'); }
-    function openLinkedIn(){ window.open('https://www.linkedin.com','_blank'); }
+    // small animated entrance for visible elements
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.fade-in').forEach((el,i)=>{ el.classList.add('stagger'); el.dataset.i = Math.min(3, i%4+1); });
+    })
 
-    // placeholder image preloader for polish (expect local assets folder)
-    const placeholders = [
-      'assets/portrait.jpg','assets/project-01.jpg','assets/project-02.jpg','assets/project-03.jpg','assets/project-04.jpg',
-      'assets/project-05.jpg','assets/project-06.jpg','assets/project-07.jpg','assets/project-08.jpg','assets/project-09.jpg','assets/project-10.jpg',
-      'assets/project-11.jpg','assets/project-12.jpg','assets/logo-dollarama.jpg','assets/logo-magnify.jpg','assets/logo-laura.jpg','assets/edu-uottawa.jpg'
-    ];
-    placeholders.forEach(u=>{ const i=new Image(); i.src=u; });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
