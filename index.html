@@ -9,371 +9,863 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <!-- Font Awesome (uses `fa fa-...` classes) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/* ---------------------------
+   Sadel Sofo — Portfolio Styles
+   Exquisite, polished, animation-rich, responsive
+   Replace placeholder images in HTML with your own assets.
+   --------------------------- */
 
-  <style>
-    :root{
-      --bg-1:#071026; --bg-2:#08142a; --panel: rgba(255,255,255,0.03);
-      --accent:#ff6b61; --muted:#9fb0c8; --glass: rgba(255,255,255,0.02);
-      --radius:18px; --fw-regular:400; --fw-strong:700;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:#e9f4ff}
-    a{color:inherit}
+/* --- Theme variables --- */
+:root{
+  --bg-1: #071026;
+  --bg-2: #061528;
+  --card-bg: rgba(255,255,255,0.02);
+  --glass: rgba(255,255,255,0.03);
+  --muted: #9fb0c8;
+  --text: #e9f4ff;
+  --accent: #ff6b61;
+  --accent-2: #ff8b7f;
+  --success: #6ee7b7;
+  --radius: 14px;
+  --max-width: 1200px;
+  --shadow-1: 0 10px 30px rgba(2,6,23,0.6);
+  --shadow-2: 0 6px 18px rgba(2,6,23,0.45);
+  --glass-border: 1px solid rgba(255,255,255,0.04);
+  --space-sm: 10px;
+  --space-md: 18px;
+  --space-lg: 28px;
+  --ease: cubic-bezier(.2,.9,.3,1);
+}
 
-    .container{max-width:1200px;margin:28px auto;padding:28px}
+/* --- Base reset and layout --- */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:
+  radial-gradient(1200px 600px at 10% 10%, rgba(6,20,40,0.35), transparent),
+  linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+img{display:block;max-width:100%;height:auto;border-radius:6px;object-fit:cover}
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--max-width);margin:0 auto;padding:24px}
 
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#0d2438,#1b3b53);display:flex;align-items:center;justify-content:center;font-weight:800}
-    .brand h1{margin:0;font-size:16px}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{font-size:14px;color:var(--muted);text-decoration:none}
+/* --- Header --- */
+header#site-header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#0b2838,#16384a);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--text);box-shadow:var(--shadow-2);border:var(--glass-border)}
+.brand-text .small-title{margin:0;font-size:16px;font-weight:700}
+.brand-text .sub{margin-top:4px;color:var(--muted);font-size:12px}
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;margin-top:22px;align-items:center}
-    .hero-left{padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid var(--panel)}
-    .eyebrow{color:var(--muted);font-weight:600;letter-spacing:0.6px}
-    .hero-left h2{font-size:36px;margin:10px 0 6px}
-    .hero-left h3{font-size:28px;margin:0;color:#fff}
-    .hero-left p{color:var(--muted);line-height:1.6;margin-top:12px}
-    .cta-row{display:flex;gap:12px;margin-top:18px}
-    .btn{padding:12px 16px;border-radius:10px;border:none;cursor:pointer}
-    .btn-accent{background:linear-gradient(90deg,var(--accent),#ff8b7f);color:#021016;font-weight:700}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+/* --- Nav --- */
+nav.nav{display:flex;gap:14px;align-items:center}
+nav.nav a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;color:var(--muted);font-size:13px;transition:all 180ms var(--ease)}
+nav.nav a:hover{color:var(--text);transform:translateY(-3px);background:rgba(255,255,255,0.01);box-shadow:0 6px 18px rgba(2,6,23,0.35)}
 
-    /* hero-right with big portrait and graphic */
-    .hero-right{position:relative;height:460px;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 70% 30%, rgba(255,107,97,0.12), transparent 20%), linear-gradient(180deg,#061221,#071a2b);display:flex;align-items:center;justify-content:center}
-    .hero-right .portrait{width:360px;height:360px;border-radius:999px;overflow:hidden;border:6px solid rgba(255,255,255,0.03);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
-    .hero-right .portrait img{width:100%;height:100%;object-fit:cover;display:block;transform:translateY(0);transition:transform 600ms}
+/* --- Hero Section --- */
+.hero-section{margin-top:20px}
+.hero-inner{display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center}
+.card-stub{background:var(--card-bg);padding:18px;border-radius:var(--radius);border:var(--glass-border);box-shadow:var(--shadow-1)}
+.hero-left{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:26px;border-radius:var(--radius);border:var(--glass-border);box-shadow:var(--shadow-1)}
+.eyebrow{color:var(--muted);font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.eyebrow i{color:var(--accent)}
+.hero-title{margin:8px 0 0;font-size:32px;line-height:1.03}
+.hero-role{margin:8px 0 0;font-size:20px;color:var(--text);font-weight:700}
+.hero-role .dot{color:var(--accent);margin-left:6px;font-weight:900}
+.hero-left p{margin-top:12px;color:var(--muted);max-width:60%;line-height:1.6}
 
-    /* skill ribbon */
-    .ribbon{margin-top:18px;background:rgba(255,255,255,0.01);padding:12px;border-radius:12px;display:flex;gap:12px;overflow-x:auto}
-    .ribbon .tag{min-width:110px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);text-align:center;color:var(--muted);font-weight:600}
+/* CTA styles */
+.hero-ctas{display:flex;gap:12px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#071017;box-shadow:0 8px 24px rgba(255,107,97,0.12), inset 0 -2px 8px rgba(0,0,0,0.12)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--muted)}
 
-    /* About + Stats */
-    .two-col{display:grid;grid-template-columns:1fr 340px;gap:22px;margin-top:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:18px;border-radius:var(--radius);border:1px solid var(--panel);box-shadow:0 8px 30px rgba(2,6,23,0.55)}
-    .stats{display:flex;gap:14px;justify-content:space-between;margin-top:18px}
-    .stat{flex:1;text-align:center}
-    .stat h4{margin:6px 0 0;color:var(--accent)}
+/* hero icons cluster */
+.hero-icons{display:flex;gap:8px;margin-top:18px;color:var(--muted)}
+.hero-icons i{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);font-size:16px;transition:transform 220ms var(--ease)}
+.hero-icons i:hover{transform:translateY(-4px) rotate(-6deg);color:var(--accent)}
 
-    /* Projects gallery */
-    .projects{margin-top:28px}
-    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .project{position:relative;border-radius:12px;overflow:hidden;height:220px}
-    .project img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform 350ms}
-    .project:hover img{transform:scale(1)}
-    .project .overlay{position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(180deg, transparent, rgba(3,6,10,0.6))}
+/* --- Portrait stack --- */
+.hero-right{position:relative;height:480px;border-radius:18px;overflow:visible;display:flex;align-items:center;justify-content:center}
+.portrait-stack{position:relative;width:420px;height:420px;display:block}
+.portrait{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:320px;height:320px;border-radius:999px;overflow:hidden;border:6px solid rgba(255,255,255,0.03);box-shadow:0 30px 80px rgba(3,8,16,0.75);background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15))}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* Experience timeline */
-    .timeline{margin-top:28px;display:flex;flex-direction:column;gap:12px}
-    .exp-item{display:flex;gap:14px;align-items:flex-start}
-    .exp-item img.logo{width:74px;height:74px;border-radius:10px;object-fit:cover}
-    .exp-item .exp-body{flex:1}
+/* decorative rings and thumbnails (placeholders for user images) */
+.portrait-stack .ring, .portrait-stack .ring-2{position:absolute;width:400px;height:400px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:999px;pointer-events:none;mix-blend-mode:screen;filter:blur(6px);opacity:0.65}
+.portrait-stack .thumb{position:absolute;width:82px;height:82px;border-radius:8px;object-fit:cover;box-shadow:0 12px 30px rgba(2,6,23,0.6);border:3px solid rgba(255,255,255,0.02)}
+.thumb-1{right:6%;top:12%}
+.thumb-2{left:4%;bottom:6%}
+.thumb-3{right:18%;bottom:8%}
+.thumb-4{left:14%;top:10%}
 
-    /* Education cards with images */
-    .education{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .edu-card{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px}
-    .edu-card img{width:110px;height:80px;border-radius:8px;object-fit:cover}
+/* --- Skill ribbon --- */
+.skill-ribbon{margin-top:22px}
+.ribbon-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.skill-tag{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600;border:1px solid rgba(255,255,255,0.02)}
+.skill-tag i{color:var(--accent)}
 
-    /* contact */
-    .contact{margin-top:28px;display:flex;gap:12px;align-items:center}
-    .contact .socials{display:flex;gap:10px}
-    .socials a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);text-decoration:none;color:var(--muted)}
+/* --- Projects grid --- */
+.projects-grid{margin-top:28px}
+.section-title{font-size:20px;margin-bottom:6px}
+.mini{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
+.project-card{position:relative;overflow:hidden;border-radius:12px;height:180px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:var(--glass-border);box-shadow:var(--shadow-2);cursor:pointer;transform-origin:center center;transition:transform 300ms var(--ease), box-shadow 300ms var(--ease)}
+.project-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 450ms var(--ease)}
+.project-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
+.project-card:hover img{transform:scale(1.06)}
+.project-card .overlay{position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(180deg, transparent, rgba(3,6,10,0.6));color:var(--text);display:flex;align-items:center;gap:10px;font-weight:700;backdrop-filter: blur(2px)}
 
-    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
+/* make grid responsive */
+@media (max-width:1200px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid{grid-template-columns:repeat(1,1fr);}.hero-left p{max-width:100%}}
 
-    /* responsive */
-    @media (max-width:1100px){
-      .hero{grid-template-columns:1fr 360px}
-      .projects-grid{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:820px){
-      .hero{grid-template-columns:1fr;}
-      .hero-right{height:360px}
-      .two-col{grid-template-columns:1fr}
-      .education{grid-template-columns:1fr}
-      .projects-grid{grid-template-columns:1fr}
-    }
+/* --- Experience timeline --- */
+.experience-section{margin-top:26px}
+.timeline{display:flex;flex-direction:column;gap:12px}
+.exp-card{display:flex;gap:16px;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:var(--glass-border);box-shadow:var(--shadow-2)}
+.exp-img{width:86px;height:86px;border-radius:10px;object-fit:cover}
+.exp-body{flex:1}
+.exp-role{margin:0;font-size:16px}
+.exp-meta{color:var(--muted);font-size:13px;margin-top:6px;display:flex;gap:8px;align-items:center}
 
-    /* reveal */
-    .reveal{opacity:0;transform:translateY(18px);transition:all 600ms cubic-bezier(.2,.9,.3,1)}
-    .reveal.show{opacity:1;transform:none}
+/* --- Education cards --- */
+.education-section{margin-top:26px}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.edu-card{position:relative;display:flex;gap:14px;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:var(--glass-border);box-shadow:var(--shadow-2)}
+.edu-img{width:120px;height:80px;border-radius:8px;object-fit:cover}
+.edu-body .edu-school{margin:0}
+.edu-icon{position:absolute;right:12px;bottom:10px;color:var(--muted);font-size:20px}
 
-    /* subtle focus */
-    :focus{outline:2px solid rgba(255,255,255,0.06);outline-offset:2px}
-  </style>
+/* responsive education grid */
+@media (max-width:820px){.edu-grid{grid-template-columns:1fr}}
+
+/* --- Contact cards --- */
+.contact-section{margin-top:28px}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.contact-card{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:var(--glass-border);box-shadow:var(--shadow-2)}
+.big-icon{font-size:28px;color:var(--accent)}
+@media (max-width:960px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.contact-grid{grid-template-columns:1fr}}
+
+/* --- Footer --- */
+.site-footer{margin-top:26px;padding:18px 0;border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}
+
+/* --- Utility text classes --- */
+.muted{color:var(--muted);font-size:13px}
+.small-muted{color:var(--muted);font-size:12px}
+
+/* --- Accessibility focus styles --- */
+.show-focus a:focus, .show-focus button:focus, .show-focus [tabindex]:focus{outline:3px solid rgba(110,231,183,0.12);outline-offset:4px;border-radius:8px}
+
+/* --- Animations: base hidden and visible (reveal system) --- */
+[class*="animate-"], .project-card, .exp-card, .edu-card, .project-card > img, header#site-header, .hero-section, .skill-ribbon, .projects-grid, .experience-section, .education-section, .contact-section{
+  opacity:0; transform:translateY(16px) scale(0.995); transition:opacity 560ms var(--ease), transform 560ms var(--ease);
+}
+.show{opacity:1;transform:none}
+
+/* Specific animation variants (start states) */
+.animate-slide-down{transform:translateY(-12px) scale(0.995);opacity:0}
+.animate-slide-up{transform:translateY(18px);opacity:0}
+.animate-zoom-in{transform:scale(.98) translateY(6px);opacity:0}
+.animate-fade-in{opacity:0;transform:none}
+.animate-pop{transform:scale(.96);opacity:0}
+.animate-stagger-up > *{opacity:0;transform:translateY(18px);transition:transform 520ms var(--ease), opacity 520ms var(--ease)}
+
+/* When .show is applied these classes will appear normal via general .show rule. */
+
+/* --- Micro animations (rAF-managed transforms fallbacks) --- */
+/* 1) float items (registered by JS) get animated by transform inline style */
+/* 2) rotate items also get transform inline style */
+
+/* CSS-based animations for simple classes (pulse, rotate) */
+@keyframes pulse-soft {
+  0%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+  100%{transform:scale(1)}
+}
+.animate-pulse{animation: pulse-soft 1800ms var(--ease) infinite}
+.animate-pulse-delay{animation: pulse-soft 1800ms var(--ease) infinite;animation-delay:260ms}
+
+@keyframes spin-slow {
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+.animate-rotate-slow{animation: spin-slow 18s linear infinite}
+.animate-rotate-reverse{animation: spin-slow 20s linear infinite;animation-direction:reverse}
+
+/* zoom variants (for project cards) */
+.animate-zoom{transform:scale(.985);opacity:0;transition:transform 420ms var(--ease), opacity 420ms var(--ease)}
+.animate-zoom.show{transform:none;opacity:1}
+
+/* stagger delay helper (you can still use inline style from JS) */
+.animate-zoom-delay-1{transition-delay:80ms}
+.animate-zoom-delay-2{transition-delay:160ms}
+.animate-zoom-delay-3{transition-delay:240ms}
+.animate-zoom-delay-4{transition-delay:320ms}
+.animate-zoom-delay-5{transition-delay:400ms}
+.animate-zoom-delay-6{transition-delay:480ms}
+.animate-zoom-delay-7{transition-delay:560ms}
+.animate-zoom-delay-8{transition-delay:640ms}
+.animate-zoom-delay-9{transition-delay:720ms}
+.animate-zoom-delay-10{transition-delay:800ms}
+.animate-zoom-delay-11{transition-delay:880ms}
+.animate-zoom-delay-12{transition-delay:960ms}
+.animate-zoom-delay-13{transition-delay:1040ms}
+.animate-zoom-delay-14{transition-delay:1120ms}
+.animate-zoom-delay-15{transition-delay:1200ms}
+
+/* slide-up delay helpers for experience cards */
+.animate-slide-up-delay-1{transition-delay:80ms}
+.animate-slide-up-delay-2{transition-delay:160ms}
+.animate-slide-up-delay-3{transition-delay:240ms}
+.animate-slide-up-delay-4{transition-delay:320ms}
+.animate-slide-up-delay-5{transition-delay:400ms}
+
+/* pop animation */
+@keyframes pop-in {
+  0%{opacity:0;transform:translateY(8px) scale(.96)}
+  60%{opacity:1;transform:translateY(-6px) scale(1.02)}
+  100%{opacity:1;transform:none}
+}
+.animate-pop.show{animation:pop-in 520ms var(--ease) both}
+.animate-pop-delay-1.show{animation:pop-in 520ms var(--ease) 80ms both}
+.animate-pop-delay-2.show{animation:pop-in 520ms var(--ease) 160ms both}
+
+/* fade-in specifics */
+.animate-fade-in.show{animation: none; opacity:1; transform:none; transition:opacity 420ms var(--ease)}
+
+/* rotate-in-view tiny state */
+.icon-rotate.rotate-in-view{transition:transform 1200ms var(--ease);transform:rotate(4deg)}
+
+/* Icon hover micro-interactions */
+i.fa{transition:transform 320ms var(--ease), color 220ms var(--ease)}
+i.fa:hover{transform:translateY(-6px) scale(1.04);color:var(--accent)}
+
+/* decorative outlines and glassy borders */
+.pulse-ring{box-shadow:0 0 30px rgba(255,107,97,0.06), inset 0 -3px 10px rgba(255,107,97,0.02)}
+.card-highlight{border:1px solid rgba(255,107,97,0.06);box-shadow:0 20px 60px rgba(255,107,97,0.03)}
+
+/* reduce-motion support & class toggle */
+@media (prefers-reduced-motion: reduce) {
+  *{animation:none!important;transition:none!important}
+}
+.reduce-motion *, .reduce-motion [class*="animate-"]{animation:none!important;transition:none!important;}
+
+/* small utilities */
+.text-center{text-align:center}
+.flex{display:flex}
+.space-between{justify-content:space-between}
+.gap-sm{gap:8px}
+.rounded{border-radius:10px}
+
+/* ensure good contrast for overlays */
+.project-card .overlay i{color:var(--accent)}
+
+/* final polish: small screens layout adjustments */
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:18px}
+  .hero-right{order:2;height:360px}
+  .portrait{width:280px;height:280px}
+  .hero-left p{max-width:100%}
+  nav.nav{display:none} /* keep header simple on small screens; replace with mobile nav if needed */
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:1fr}
+  .hero-right{height:320px}
+  .portrait{width:220px;height:220px}
+}
+
+/* small helper for hidden text for screen readers */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+
 </head>
-<body>
-  <div class="container">
-    <header class="reveal">
+  <body>
+  <!-- HEADER -->
+  <header id="site-header" class="animate-slide-down" role="banner" aria-label="Site header">
+    <div class="container">
       <div class="brand">
-        <div class="logo">SS</div>
-        <div>
-          <h1>Sadel Sofo</h1>
-          <div style="color:var(--muted);font-size:13px;margin-top:4px">Graduate Student — University of Ottawa</div>
+        <div class="logo" aria-hidden="true"><span>SS</span></div>
+        <div class="brand-text">
+          <h1 class="small-title">Sadel Sofo</h1>
+          <div class="sub small-muted">Graduate Student • Ottawa</div>
         </div>
       </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+
+      <nav class="nav" role="navigation" aria-label="Primary navigation">
+        <a href="#about" class="nav-link"><i class="fa fa-user"></i><span class="sr-only">About</span></a>
+        <a href="#projects" class="nav-link"><i class="fa fa-briefcase"></i><span class="sr-only">Projects</span></a>
+        <a href="#experience" class="nav-link"><i class="fa fa-archive"></i><span class="sr-only">Experience</span></a>
+        <a href="#education" class="nav-link"><i class="fa fa-graduation-cap"></i><span class="sr-only">Education</span></a>
+        <a href="#contact" class="nav-link"><i class="fa fa-envelope"></i><span class="sr-only">Contact</span></a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Intro">
-      <div class="hero-left card reveal">
-        <div class="eyebrow">Hello<span style="color:var(--accent)">.</span></div>
-        <h2>I'm Sadel — <span style="color:var(--muted);font-weight:600">She / Her</span></h2>
-        <h3>Graduate Student • Accessibility Researcher • Customer Experience</h3>
-        <p>Passionate about inclusive design, service excellence, and building practical solutions that improve people's lives. My work spans accessibility research, client services, and retail leadership where I centre empathy and reliability.</p>
+  <!-- HERO -->
+  <main id="main" role="main">
+    <section id="hero" class="hero-section animate-zoom-in" aria-label="Introduction">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <div class="eyebrow"><i class="fa fa-hand-peace-o"></i> Hello.</div>
+          <h2 class="hero-title">I’m <strong>Sadel</strong></h2>
+          <h3 class="hero-role">Accessibility Researcher<span class="dot">.</span></h3>
 
-        <div class="cta-row">
-          <button class="btn btn-accent" onclick="scrollToSection('contact')"><i class="fa fa-paper-plane"></i>&nbsp;Get in touch</button>
-          <a class="btn btn-ghost" href="#projects"><i class="fa fa-briefcase"></i>&nbsp;View projects</a>
-          <a class="btn btn-ghost" href="#" onclick="downloadResume()"><i class="fa fa-download"></i>&nbsp;Resume (PDF)</a>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Contact</a>
+            <a href="#" class="btn btn-outline"><i class="fa fa-download"></i> Resume</a>
+          </div>
+
+          <div class="hero-icons" aria-hidden="true">
+            <!-- many small icons to emphasize skills -->
+            <i class="fa fa-universal-access fa-stack-1x"></i>
+            <i class="fa fa-users fa-stack-1x"></i>
+            <i class="fa fa-cogs fa-stack-1x"></i>
+            <i class="fa fa-clock-o fa-stack-1x"></i>
+            <i class="fa fa-comments fa-stack-1x"></i>
+            <i class="fa fa-lightbulb-o fa-stack-1x"></i>
+          </div>
         </div>
 
-        <div class="ribbon" aria-hidden="true">
-          <div class="tag">Customer Service</div>
-          <div class="tag">Accessibility Research</div>
-          <div class="tag">Project Mgmt</div>
-          <div class="tag">Time Management</div>
-          <div class="tag">Teamwork</div>
-          <div class="tag">Communication</div>
-          <div class="tag">Organization</div>
-        </div>
-
-      </div>
-
-      <div class="hero-right reveal">
-        <div class="portrait" title="Sadel Sofo portrait">
-          <!-- large portrait image emphasizing style from sample -->
-          <img src="https://images.unsplash.com/photo-1545996124-1b9d7d4b2a4e?q=80&w=1400&auto=format&fit=crop&crop=faces" alt="Sadel portrait">
+        <div class="hero-right" aria-hidden="false">
+          <!-- multiple portrait images stacked; remove or replace as needed -->
+          <div class="portrait-stack">
+            <img class="portrait large animate-float" src="images/portrait-main.jpg" alt="Sadel portrait - main">
+            <img class="portrait ring animate-rotate-slow" src="images/portrait-ring-1.png" alt="graphic ring 1">
+            <img class="portrait ring-2 animate-rotate-reverse" src="images/portrait-ring-2.png" alt="graphic ring 2">
+            <!-- small thumbnails around portrait -->
+            <img class="thumb thumb-1 animate-pulse" src="images/thumb-1.jpg" alt="thumb 1">
+            <img class="thumb thumb-2 animate-pulse-delay" src="images/thumb-2.jpg" alt="thumb 2">
+            <img class="thumb thumb-3 animate-pulse" src="images/thumb-3.jpg" alt="thumb 3">
+            <img class="thumb thumb-4 animate-pulse-delay" src="images/thumb-4.jpg" alt="thumb 4">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT + STATS -->
-    <section class="two-col">
-      <div class="card reveal" id="about">
-        <h2>About me</h2>
-        <p>I am currently pursuing my Master's at the University of Ottawa in Public & International Affairs. My recent role as an Accommodation Research Specialist deepened my understanding of accessible product design and inclusive policy. In retail and client-facing roles I focus on clear communication, efficiency, and creating welcoming customer experiences.</p>
-
-        <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <div class="card" style="padding:12px">
-            <strong>Availability</strong>
-            <div class="muted" style="margin-top:8px">Part-time / Contract</div>
-          </div>
-          <div class="card" style="padding:12px">
-            <strong>Location</strong>
-            <div class="muted" style="margin-top:8px">Ottawa, Ontario, Canada</div>
-          </div>
+    <!-- SKILL RIBBON (icons heavy) -->
+    <section id="skills" class="skill-ribbon animate-slide-up" aria-label="Skills">
+      <div class="container">
+        <div class="ribbon-row">
+          <!-- each tag shows an icon + label (minimal text) -->
+          <div class="skill-tag"><i class="fa fa-universal-access"></i><span>Accessibility</span></div>
+          <div class="skill-tag"><i class="fa fa-user-circle"></i><span>Client Care</span></div>
+          <div class="skill-tag"><i class="fa fa-search"></i><span>Research</span></div>
+          <div class="skill-tag"><i class="fa fa-project-diagram"></i><span>Projects</span></div>
+          <div class="skill-tag"><i class="fa fa-clock-o"></i><span>Time Mgmt</span></div>
+          <div class="skill-tag"><i class="fa fa-comments"></i><span>Communication</span></div>
+          <div class="skill-tag"><i class="fa fa-cubes"></i><span>Organization</span></div>
+          <div class="skill-tag"><i class="fa fa-users"></i><span>Teamwork</span></div>
+          <div class="skill-tag"><i class="fa fa-check-circle"></i><span>Reliable</span></div>
         </div>
-
-        <h3 style="margin-top:14px">Selected highlights</h3>
-        <ul style="margin-top:10px;color:var(--muted);line-height:1.8">
-          <li>Conducted in-depth accommodation & accessibility research for Magnify Access Inc.</li>
-          <li>3+ years experience in customer-facing roles across retail and client services.</li>
-          <li>Strong track record of collaboration, organization, and delivering polished stakeholder reports.</li>
-        </ul>
       </div>
+    </section>
 
-      <aside class="card reveal">
-        <h2>Statistics</h2>
-        <div class="stats">
-          <div class="stat"><div class="muted">Completed projects</div><h4>120+</h4></div>
-          <div class="stat"><div class="muted">Client satisfaction</div><h4>95%</h4></div>
-          <div class="stat"><div class="muted">Years experience</div><h4>3+</h4></div>
+    <!-- PROJECTS GRID - LOTS of IMAGES -->
+    <section id="projects" class="projects-grid animate-stagger-up" aria-label="Projects gallery">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="mini muted">Visuals & deliverables</p>
+
+        <div class="grid">
+          <!-- 16 placeholders (replace with real images) -->
+          <figure class="project-card animate-zoom" data-index="1">
+            <img src="images/project-01.jpg" alt="Project 01 - image">
+            <figcaption class="overlay"><i class="fa fa-file-text-o"></i><span>Report</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-1" data-index="2">
+            <img src="images/project-02.jpg" alt="Project 02 - image">
+            <figcaption class="overlay"><i class="fa fa-bar-chart"></i><span>Visual</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-2" data-index="3">
+            <img src="images/project-03.jpg" alt="Project 03 - image">
+            <figcaption class="overlay"><i class="fa fa-laptop"></i><span>Dashboard</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-3" data-index="4">
+            <img src="images/project-04.jpg" alt="Project 04 - image">
+            <figcaption class="overlay"><i class="fa fa-file-powerpoint-o"></i><span>Deck</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-4" data-index="5">
+            <img src="images/project-05.jpg" alt="Project 05 - image">
+            <figcaption class="overlay"><i class="fa fa-users"></i><span>Workshop</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-5" data-index="6">
+            <img src="images/project-06.jpg" alt="Project 06 - image">
+            <figcaption class="overlay"><i class="fa fa-wrench"></i><span>Tooling</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-6" data-index="7">
+            <img src="images/project-07.jpg" alt="Project 07 - image">
+            <figcaption class="overlay"><i class="fa fa-map-o"></i><span>Map</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-7" data-index="8">
+            <img src="images/project-08.jpg" alt="Project 08 - image">
+            <figcaption class="overlay"><i class="fa fa-check"></i><span>Checklist</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-8" data-index="9">
+            <img src="images/project-09.jpg" alt="Project 09 - image">
+            <figcaption class="overlay"><i class="fa fa-pencil-square-o"></i><span>Guide</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-9" data-index="10">
+            <img src="images/project-10.jpg" alt="Project 10 - image">
+            <figcaption class="overlay"><i class="fa fa-camera"></i><span>Media</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-10" data-index="11">
+            <img src="images/project-11.jpg" alt="Project 11 - image">
+            <figcaption class="overlay"><i class="fa fa-file"></i><span>Docs</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-11" data-index="12">
+            <img src="images/project-12.jpg" alt="Project 12 - image">
+            <figcaption class="overlay"><i class="fa fa-table"></i><span>Data</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-12" data-index="13">
+            <img src="images/project-13.jpg" alt="Project 13 - image">
+            <figcaption class="overlay"><i class="fa fa-users"></i><span>Stakeholder</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-13" data-index="14">
+            <img src="images/project-14.jpg" alt="Project 14 - image">
+            <figcaption class="overlay"><i class="fa fa-tag"></i><span>Brand</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-14" data-index="15">
+            <img src="images/project-15.jpg" alt="Project 15 - image">
+            <figcaption class="overlay"><i class="fa fa-cog"></i><span>Prototype</span></figcaption>
+          </figure>
+
+          <figure class="project-card animate-zoom-delay-15" data-index="16">
+            <img src="images/project-16.jpg" alt="Project 16 - image">
+            <figcaption class="overlay"><i class="fa fa-star"></i><span>Featured</span></figcaption>
+          </figure>
         </div>
+      </div>
+    </section>
 
-        <h3 style="margin-top:16px">Education snapshot</h3>
-        <div style="display:flex;gap:8px;flex-direction:column;margin-top:8px">
-          <div style="display:flex;gap:10px;align-items:center">
-            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop" alt="uOttawa campus" style="width:64px;height:44px;border-radius:8px;object-fit:cover">
-            <div>
-              <strong>University of Ottawa</strong>
-              <div class="muted">Master's — Public & International Affairs</div>
+    <!-- EXPERIENCE - minimal text, image for each -->
+    <section id="experience" class="experience-section animate-stagger-up" aria-label="Work experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+          <article class="exp-card animate-slide-up">
+            <img class="exp-img" src="images/company-dollarama.jpg" alt="Dollarama logo / image">
+            <div class="exp-body">
+              <h3 class="exp-role">Sales Associate</h3>
+              <div class="exp-meta"><i class="fa fa-map-marker"></i> Orleans • <i class="fa fa-calendar"></i> Feb 2023 — Present</div>
             </div>
-          </div>
+          </article>
 
-          <div style="display:flex;gap:10px;align-items:center">
-            <img src="https://images.unsplash.com/photo-1526481280698-0a3e5f7f1d9b?q=80&w=600&auto=format&fit=crop" alt="carleton" style="width:64px;height:44px;border-radius:8px;object-fit:cover">
-            <div>
-              <strong>Carleton University</strong>
-              <div class="muted">Combined honours — Women’s & Gender Studies & African Studies</div>
+          <article class="exp-card animate-slide-up-delay-1">
+            <img class="exp-img" src="images/company-magnify.jpg" alt="Magnify Access image">
+            <div class="exp-body">
+              <h3 class="exp-role">Accommodation Research Specialist</h3>
+              <div class="exp-meta"><i class="fa fa-map-marker"></i> Toronto • <i class="fa fa-calendar"></i> Jan 2024 — Apr 2024</div>
             </div>
-          </div>
+          </article>
 
-        </div>
+          <article class="exp-card animate-slide-up-delay-2">
+            <img class="exp-img" src="images/company-laura.jpg" alt="Laura Canada image">
+            <div class="exp-body">
+              <h3 class="exp-role">Client Services Coordinator</h3>
+              <div class="exp-meta"><i class="fa fa-map-marker"></i> Ottawa • <i class="fa fa-calendar"></i> Feb 2023 — Feb 2024</div>
+            </div>
+          </article>
 
-      </aside>
-    </section>
+          <!-- additional short entries -->
+          <article class="exp-card animate-slide-up-delay-3">
+            <img class="exp-img" src="images/company-childrensplace.jpg" alt="The Children's Place image">
+            <div class="exp-body">
+              <h3 class="exp-role">Sales Associate</h3>
+              <div class="exp-meta"><i class="fa fa-calendar"></i> Sep 2022 — Jul 2023</div>
+            </div>
+          </article>
 
-    <!-- PROJECTS (A LOT of images) -->
-    <section id="projects" class="projects">
-      <h2 class="reveal">Projects</h2>
-      <p class="reveal" style="color:var(--muted);margin-top:8px">A curated selection of work, research, and practical outcomes — visuals included.</p>
+          <article class="exp-card animate-slide-up-delay-4">
+            <img class="exp-img" src="images/company-shoe.jpg" alt="The Shoe Company image">
+            <div class="exp-body">
+              <h3 class="exp-role">Sales Associate</h3>
+              <div class="exp-meta"><i class="fa fa-calendar"></i> Oct 2021 — Aug 2022</div>
+            </div>
+          </article>
 
-      <div class="projects-grid reveal" style="margin-top:14px">
-        <!-- 9 sample project images -->
-        <div class="project"><img src="https://images.unsplash.com/photo-1521790366064-7986c2920216?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Accessibility Report</strong></div></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Client Services Dashboard</strong></div></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Community Engagement Plan</strong></div></div>
-
-        <div class="project"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Research Visualization</strong></div></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Policy Brief</strong></div></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Retail Project: Floor Layout</strong></div></div>
-
-        <div class="project"><img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>User Journey Mapping</strong></div></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Presentation Deck</strong></div></div>
-        <div class="project"><img src="https://images.unsplash.com/photo-1531497865146-3f2b725a70d7?q=80&w=1200&auto=format&fit=crop" alt="project"><div class="overlay"><strong>Training Materials</strong></div></div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="reveal">
-      <h2 style="margin-top:28px">Experience</h2>
-      <div class="timeline">
-        <div class="exp-item card">
-          <img class="logo" src="https://images.unsplash.com/photo-1584467735877-6ef0b1ab7f0a?q=80&w=800&auto=format&fit=crop" alt="Dollarama logo">
-          <div class="exp-body">
-            <h3>Sales Associate — Dollarama L.P.</h3>
-            <div class="muted">Feb 2023 — Present · Orleans, ON</div>
-            <p style="margin-top:8px;color:var(--muted)">Provide excellent customer service, perform cash handling, assist with opening/closing, and maintain a tidy sales environment.</p>
-          </div>
-        </div>
-
-        <div class="exp-item card">
-          <img class="logo" src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=800&auto=format&fit=crop" alt="Magnify Access">
-          <div class="exp-body">
-            <h3>Accommodation Research Specialist — Magnify Access Inc.</h3>
-            <div class="muted">Jan 2024 — Apr 2024 · Toronto, ON</div>
-            <p style="margin-top:8px;color:var(--muted)">Researched accessibility & accommodation trends and collaborated with product teams to shape accessible solutions and recommendations.</p>
-          </div>
-        </div>
-
-        <div class="exp-item card">
-          <img class="logo" src="https://images.unsplash.com/photo-1517244683843-3a68aef5e13e?q=80&w=800&auto=format&fit=crop" alt="Laura Canada">
-          <div class="exp-body">
-            <h3>Client Services Coordinator — Laura Canada</h3>
-            <div class="muted">Feb 2023 — Feb 2024 · Ottawa, ON</div>
-            <p style="margin-top:8px;color:var(--muted)">Managed customer inquiries, prepared merchandise and supported front-of-house operations.</p>
-          </div>
-        </div>
-
-        <!-- more items with images -->
-        <div class="exp-item card">
-          <img class="logo" src="https://images.unsplash.com/photo-1520975698516-0636c1c3ce3b?q=80&w=800&auto=format&fit=crop" alt="The Children's Place">
-          <div class="exp-body">
-            <h3>Part Time Sales Associate — The Children's Place</h3>
-            <div class="muted">Sep 2022 — Jul 2023 · Orleans, ON</div>
-          </div>
-        </div>
-
-        <div class="exp-item card">
-          <img class="logo" src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=800&auto=format&fit=crop" alt="The Shoe Company">
-          <div class="exp-body">
-            <h3>Part Time Sales Associate — The Shoe Company</h3>
-            <div class="muted">Oct 2021 — Aug 2022 · Ajax, ON</div>
-          </div>
-        </div>
-
-        <div class="exp-item card">
-          <img class="logo" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="The Body Shop">
-          <div class="exp-body">
-            <h3>Part Time Customer Consultant — The Body Shop</h3>
-            <div class="muted">Oct 2020 — Aug 2021 · Ottawa, ON</div>
-          </div>
+          <article class="exp-card animate-slide-up-delay-5">
+            <img class="exp-img" src="images/company-bodyshop.jpg" alt="The Body Shop image">
+            <div class="exp-body">
+              <h3 class="exp-role">Customer Consultant</h3>
+              <div class="exp-meta"><i class="fa fa-calendar"></i> Oct 2020 — Aug 2021</div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- EDUCATION (images for each) -->
-    <section id="education" class="reveal">
-      <h2 style="margin-top:28px">Education</h2>
-      <div class="education">
-        <div class="card edu-card">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="uOttawa campus">
-          <div>
-            <strong>University of Ottawa</strong>
-            <div class="muted">Master's degree — Public & International Affairs</div>
-            <p style="margin-top:8px;color:var(--muted)">Graduate studies focusing on public policy, international frameworks, and inclusive practice.</p>
-          </div>
-        </div>
+    <!-- EDUCATION - image for each school -->
+    <section id="education" class="education-section animate-fade-in" aria-label="Education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-grid">
+          <article class="edu-card animate-pop">
+            <img class="edu-img" src="images/uottawa.jpg" alt="University of Ottawa image">
+            <div class="edu-body">
+              <h3 class="edu-school">University of Ottawa</h3>
+              <div class="muted">Master's — Public &amp; International Affairs</div>
+            </div>
+            <i class="fa fa-graduation-cap edu-icon"></i>
+          </article>
 
-        <div class="card edu-card">
-          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="Carleton">
-          <div>
-            <strong>Carleton University</strong>
-            <div class="muted">Combined honours — Women’s & Gender Studies & African Studies</div>
-            <p style="margin-top:8px;color:var(--muted)">Interdisciplinary studies with a focus on social justice, critical thought, and research methods.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="reveal">
-      <h2 style="margin-top:28px">Contact</h2>
-      <div class="card contact">
-        <div style="flex:1">
-          <p class="muted">Reach out for collaboration, research inquiries, or contract work.</p>
-          <div style="margin-top:8px"><strong>Email</strong><div class="muted">contact@example.com</div></div>
-          <div style="margin-top:8px"><strong>Location</strong><div class="muted">Ottawa, Ontario, Canada</div></div>
-        </div>
-
-        <div style="width:280px;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-          <div class="socials">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i>&nbsp;LinkedIn</a>
-            <a href="#"><i class="fa fa-envelope"></i>&nbsp;Email</a>
-          </div>
-          <div style="margin-top:12px;font-size:13px;color:var(--muted)">Download CV / View on LinkedIn</div>
+          <article class="edu-card animate-pop-delay-1">
+            <img class="edu-img" src="images/carleton.jpg" alt="Carleton University image">
+            <div class="edu-body">
+              <h3 class="edu-school">Carleton University</h3>
+              <div class="muted">Combined honours — Women’s &amp; African Studies</div>
+            </div>
+            <i class="fa fa-book edu-icon"></i>
+          </article>
         </div>
       </div>
     </section>
 
-    <footer class="reveal">
-      <div class="muted">© <span id="year"></span> Sadel Sofo • Built with attention to accessibility & polish. Replace placeholder images and contact details before publishing.</div>
-    </footer>
-  </div>
+    <!-- CONTACT - minimal + many icons -->
+    <section id="contact" class="contact-section animate-slide-up" aria-label="Contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-card animate-pop">
+            <i class="fa fa-envelope big-icon"></i>
+            <div><strong>Email</strong><div class="muted">contact@example.com</div></div>
+          </div>
 
-  <script>
-    // Reveal on scroll
-    function revealOnScroll(){
-      const els = document.querySelectorAll('.reveal');
-      const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target) } });
-      },{threshold:0.12});
-      els.forEach(el=>obs.observe(el));
-    }
+          <div class="contact-card animate-pop-delay-1">
+            <i class="fa fa-linkedin big-icon"></i>
+            <div><strong>LinkedIn</strong><div class="muted">linkedin.com/in/sadel-sofo</div></div>
+          </div>
 
-    function scrollToSection(id){
-      const el = document.getElementById(id);
-      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-    }
+          <div class="contact-card animate-pop-delay-2">
+            <i class="fa fa-phone big-icon"></i>
+            <div><strong>Phone</strong><div class="muted">+1 (___) ___-____</div></div>
+          </div>
 
-    function downloadResume(){
-      alert('Replace this function with a real PDF link or trigger.');
-    }
+          <div class="contact-card animate-pop-delay-3">
+            <i class="fa fa-map-marker big-icon"></i>
+            <div><strong>Location</strong><div class="muted">Ottawa, Ontario, Canada</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    // lazy preloading many images for polish
-    function preloadImages(urls){ urls.forEach(u=>{ const i=new Image(); i.src=u }); }
-    preloadImages([
-      'https://images.unsplash.com/photo-1521790366064-7986c2920216?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1200&auto=format&fit=crop'
-    ]);
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-    revealOnScroll();
-  </script>
+  <!-- FOOTER -->
+  <footer id="site-footer" class="site-footer animate-fade-in" role="contentinfo">
+    <div class="container">
+      <div class="footer-left">
+        <small class="muted">© <span id="year-placeholder">2025</span> Sadel Sofo</small>
+      </div>
+      <div class="footer-right">
+        <!-- small icon cluster -->
+        <i class="fa fa-heart"></i>
+        <i class="fa fa-magic"></i>
+        <i class="fa fa-shield"></i>
+      </div>
+    </div>
+  </footer>
 </body>
+<!-- Place this just before </body> -->
+<script>
+
+/* ---------- Utilities ---------- */
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+/* ---------- Smooth scrolling for anchor links ---------- */
+function enableSmoothNav() {
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // update focus for accessibility
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+    window.setTimeout(() => target.removeAttribute('tabindex'), 1200);
+  });
+}
+
+/* ---------- Reveal on scroll (generic) ---------- */
+function enableRevealOnScroll() {
+  const items = $$(
+    '.reveal, [class*="animate-"], .project-card, .exp-card, .edu-card, .project-card > img'
+  );
+
+  // Use IntersectionObserver when available
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        // if parent has data-stagger attribute, children will be handled separately
+        if (el.classList.contains('animate-stagger-up')) {
+          staggerRevealChildren(el);
+        } else {
+          // allow custom delay via data-delay (ms) or data-index
+          const delay = parseInt(el.dataset.delay || el.dataset.index || 0, 10);
+          setTimeout(() => el.classList.add('show'), clamp(delay, 0, 5000));
+        }
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.10 });
+
+    items.forEach(el => observer.observe(el));
+  } else {
+    // fallback: simply add class immediately
+    items.forEach(el => el.classList.add('show'));
+  }
+
+  function staggerRevealChildren(container) {
+    // pick direct children or specific grid items
+    const children = Array.from(container.children).filter(c => c.offsetParent !== null);
+    children.forEach((child, i) => {
+      const base = parseInt(container.dataset.baseDelay || '60', 10);
+      const extra = parseInt(child.dataset.delay || '0', 10);
+      setTimeout(() => child.classList.add('show'), base * i + extra);
+    });
+  }
+}
+
+/* ---------- Stagger helper for project grids ---------- */
+function enableStaggeredGrids() {
+  // any container with class "animate-stagger-up" will have children animated in sequence
+  $$('.animate-stagger-up').forEach(container => {
+    container.querySelectorAll('.project-card, .grid > *').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 80}ms`;
+    });
+  });
+}
+
+/* ---------- Floating / rotating / pulsing animations (rAF) ---------- */
+function AnimEngine() {
+  this.floatItems = []; // {el, amp, speed, phase}
+  this.rotateItems = []; // {el, speed, direction}
+  this.pulseItems = []; // {el, amp, speed, base}
+  this.running = false;
+  this._frame = this._frame.bind(this);
+}
+
+AnimEngine.prototype.registerFloat = function(el, opts = {}) {
+  const amp = parseFloat(el.dataset.amp || opts.amp || 8);
+  const speed = parseFloat(el.dataset.speed || opts.speed || 0.0018);
+  const phase = Math.random() * Math.PI * 2;
+  this.floatItems.push({ el, amp, speed, phase });
+  this._ensureRunning();
+};
+
+AnimEngine.prototype.registerRotate = function(el, opts = {}) {
+  const speed = parseFloat(el.dataset.speed || opts.speed || 0.03); // deg/ms
+  const dir = el.dataset.dir === 'rev' ? -1 : 1;
+  this.rotateItems.push({ el, speed, dir, angle: 0 });
+  this._ensureRunning();
+};
+
+AnimEngine.prototype.registerPulse = function(el, opts = {}) {
+  const amp = parseFloat(el.dataset.amp || opts.amp || 0.06);
+  const speed = parseFloat(el.dataset.speed || opts.speed || 0.0024);
+  const base = parseFloat(el.dataset.base || opts.base || 1.0);
+  const phase = Math.random() * Math.PI * 2;
+  this.pulseItems.push({ el, amp, speed, base, phase });
+  this._ensureRunning();
+};
+
+AnimEngine.prototype._ensureRunning = function() {
+  if (!this.running) {
+    this.running = true;
+    requestAnimationFrame(this._frame);
+  }
+};
+
+AnimEngine.prototype._frame = function(ts) {
+  // ts is milliseconds since page load
+  // FLOAT
+  this.floatItems.forEach(item => {
+    const y = Math.sin(ts * item.speed + item.phase) * item.amp;
+    item.el.style.transform = `translate3d(0, ${y}px, 0)`;
+  });
+  // ROTATE
+  this.rotateItems.forEach(item => {
+    item.angle = (item.angle + item.speed) % 360;
+    item.el.style.transform = `rotate(${item.angle * item.dir}deg)`;
+  });
+  // PULSE
+  this.pulseItems.forEach(item => {
+    const s = item.base + Math.sin(ts * item.speed + item.phase) * item.amp;
+    item.el.style.transform = `scale(${s})`;
+  });
+
+  // loop
+  requestAnimationFrame(this._frame);
+};
+
+/* ---------- Parallax mouse effect for hero portrait area ---------- */
+function enableHeroParallax() {
+  const hero = $('#hero');
+  if (!hero) return;
+  const portraitStack = hero.querySelectorAll('.portrait, .thumb, .ring, .ring-2, .portrait-stack > *');
+  if (!portraitStack.length) return;
+
+  hero.addEventListener('mousemove', (ev) => {
+    const r = hero.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    const dx = (ev.clientX - cx) / r.width;
+    const dy = (ev.clientY - cy) / r.height;
+
+    portraitStack.forEach((el, i) => {
+      const depth = (i + 1) / portraitStack.length; // 0..1
+      const tx = dx * 18 * (0.15 + depth * 0.85);
+      const ty = dy * 18 * (0.15 + depth * 0.85);
+      // combine with existing transforms (we set translate on float items via rAF, so keep ROT & SCALE)
+      el.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+    });
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    portraitStack.forEach(el => el.style.transform = '');
+  });
+}
+
+/* ---------- Lazy loading & preload helpers ---------- */
+function enableLazyImages() {
+  // Mark any <img data-src="..."> to be lazy-loaded; otherwise set loading=lazy
+  const lazyImgs = $$('img[data-src]');
+  if ('IntersectionObserver' in window && lazyImgs.length) {
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const img = en.target;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+        img.addEventListener('error', () => img.classList.add('img-error'));
+        o.unobserve(img);
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.01 });
+    lazyImgs.forEach(img => obs.observe(img));
+  } else {
+    // fallback: load immediately
+    lazyImgs.forEach(img => img.src = img.dataset.src);
+  }
+
+  // set native loading=lazy for other images to reduce bandwidth if supported
+  $$('img:not([loading])').forEach(img => { try { img.loading = 'lazy'; } catch (e) {} });
+}
+
+/* Simple image preloader - accept array or attempt to gather all images in DOM */
+function preloadImages(urls = []) {
+  const list = urls.length ? urls.slice() : $$('img').map(i => i.src).filter(Boolean);
+  list.forEach(u => { const im = new Image(); im.src = u; });
+}
+
+/* ---------- Resume download handler ---------- */
+function enableResumeDownload() {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-resume-url], .resume-download, a.resume');
+    if (!btn) return;
+    const url = btn.dataset.resumeUrl || btn.href;
+    if (!url) return; // let default behavior occur
+    e.preventDefault();
+    // simple accessible download trigger
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = url.split('/').pop() || 'resume.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
+}
+
+/* ---------- Icon spin on hover / in-view ---------- */
+function enableIconMotion() {
+  // Spin icons with .spin-on-hover on pointerenter (works without CSS)
+  $$('i.spin-on-hover, .fa-spin, .icon-spin').forEach(i => {
+    i.addEventListener('mouseenter', () => {
+      i.style.transition = 'transform 650ms cubic-bezier(.2,.9,.3,1)';
+      i.style.transform = 'rotate(360deg)';
+      setTimeout(() => { i.style.transform = ''; }, 700);
+    });
+  });
+
+  // In-view tiny rotation for .icon-rotate elements
+  if ('IntersectionObserver' in window) {
+    const rotItems = $$('.icon-rotate');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) en.target.classList.add('rotate-in-view');
+      });
+    }, { threshold: 0.2 });
+    rotItems.forEach(i => obs.observe(i));
+  }
+}
+
+/* ---------- Keyboard focus helper (show focus outlines on Tab) ---------- */
+function enableFocusOutlineToggle() {
+  function showFocus() { document.documentElement.classList.add('show-focus'); window.removeEventListener('keydown', onKeydown); }
+  function onKeydown(e) { if (e.key === 'Tab') showFocus(); }
+  window.addEventListener('keydown', onKeydown);
+  // fallback: if user clicks, hide outlines
+  window.addEventListener('mousedown', () => document.documentElement.classList.remove('show-focus'));
+}
+
+/* ---------- Bootstrapping & registration ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  enableSmoothNav();
+  enableRevealOnScroll();
+  enableStaggeredGrids();
+  enableLazyImages();
+  enableResumeDownload();
+  enableIconMotion();
+  enableHeroParallax();
+  enableFocusOutlineToggle();
+
+  // instantiate engine and wire elements that need rAF transforms
+  const anim = new AnimEngine();
+
+  // floating portraits
+  $$('.animate-float, .portrait.large, .portrait-stack .portrait').forEach(el => anim.registerFloat(el, { amp: parseFloat(el.dataset.amp || 8), speed: parseFloat(el.dataset.speed || 0.0016) }));
+
+  // rotating rings
+  $$('.animate-rotate-slow, .ring, .ring-2, .rotate-slow').forEach(el => anim.registerRotate(el, { speed: parseFloat(el.dataset.speed || 0.02) }));
+
+  // pulsing thumbnails
+  $$('.animate-pulse, .thumb, .pulse').forEach(el => anim.registerPulse(el, { amp: 0.06, speed: 0.0028 }));
+
+  // preload visible images (optional). If you have many images, pass a curated list.
+  preloadImages();
+
+  // small performance tweak: reduce animation intensity on small devices
+  if (window.innerWidth < 720) {
+    document.documentElement.classList.add('reduce-motion');
+  }
+});
+
+/* ---------- Optional: expose helpers to window for debugging ---------- */
+window.__SadelPortfolio = {
+  preloadImages,
+  enableRevealOnScroll,
+  enableHeroParallax
+};
+</script>
+
 </html>
