@@ -1862,14 +1862,17 @@ textarea {
     width: 100%;
   }
 
-  .hero__stats,
-  .trust-strip__inner,
-  .about__cards,
-  .skills__grid,
-  .services__grid,
-  .archive__grid {
-    grid-template-columns: 1fr;
-  }
+.hero__stats,
+.skills__grid,
+.services__grid,
+.archive__grid {
+  grid-template-columns: 1fr;
+}
+
+.trust-strip__inner,
+.about__cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 
   .hero__visual {
     min-height: auto;
@@ -1885,11 +1888,11 @@ textarea {
     border-radius: 20px;
   }
 
-  .floating-panel {
-    position: static;
-    margin-top: 0.85rem;
-  }
-
+ .floating-panel {
+  position: static;
+  margin-top: 0.85rem;
+  width: 100%;
+}
   .visual-orbit,
   .grid-glow {
     display: none;
@@ -2003,6 +2006,122 @@ textarea {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+  .featured-projects {
+  display: grid;
+  gap: 1.7rem;
+}
+
+@media (max-width: 760px) {
+  .featured-projects {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .featured-projects::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .featured-projects::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+  }
+
+  .featured-projects .project {
+    min-width: 88%;
+    flex: 0 0 88%;
+    scroll-snap-align: start;
+  }
+}
+
+  @media (max-width: 760px) {
+  .visual-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .floating-panel {
+    order: 3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+  }
+
+  .floating-panel strong {
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  .floating-panel p {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+}
+
+  @media (max-width: 760px) {
+  .trust-item,
+  .info-card {
+    min-height: 140px;
+    padding: 1rem;
+  }
+
+  .trust-item {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+    text-align: center;
+    font-size: 0.92rem;
+  }
+
+  .info-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .info-card h3 {
+    font-size: 0.98rem;
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+  @media (max-width: 520px) {
+  .trust-strip__inner,
+  .about__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .trust-item,
+  .info-card {
+    border-radius: 20px;
+  }
+
+  .trust-item span {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .info-card p {
+    font-size: 0.85rem;
+  }
+
+  .featured-projects .project {
+    min-width: 92%;
+    flex-basis: 92%;
   }
 }
 </style>
@@ -2140,7 +2259,7 @@ textarea {
                 </div>
 
                 <div class="hero-profile-media">
-                  <img src="james-portrait.jpg" alt="Portrait of James" />
+                  <img src="pfp.jpg" alt="Portrait of James" />
                 </div>
 
                 <div class="hero-profile-copy">
@@ -2155,8 +2274,7 @@ textarea {
                 <i class="fa-solid fa-layer-group"></i>
               </div>
               <div>
-                <strong>Frontend + Backend</strong>
-                <p>Not just visuals</p>
+               <p>Frontend + Backend<br>Not just visuals</p>
               </div>
             </div>
 
@@ -2182,27 +2300,27 @@ textarea {
       </div>
     </section>
 
-    <!-- Trust Strip -->
-    <section class="trust-strip">
-      <div class="container trust-strip__inner">
-        <div class="trust-item reveal">
-          <i class="fa-solid fa-globe"></i>
-          <span>Business Websites</span>
-        </div>
-        <div class="trust-item reveal">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
-          <span>Custom Web Apps</span>
-        </div>
-        <div class="trust-item reveal">
-          <i class="fa-solid fa-chart-line"></i>
-          <span>Dashboards & Admin Panels</span>
-        </div>
-        <div class="trust-item reveal">
-          <i class="fa-solid fa-bolt"></i>
-          <span>Fast, Responsive Interfaces</span>
-        </div>
-      </div>
-    </section>
+  <!-- Trust Strip -->
+<section class="trust-strip">
+  <div class="container trust-strip__inner">
+    <div class="trust-item reveal">
+      <i class="fa-solid fa-globe"></i>
+      <span>Business Websites</span>
+    </div>
+    <div class="trust-item reveal">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <span>Custom Web Apps</span>
+    </div>
+    <div class="trust-item reveal">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>Dashboards &amp; Admin Panels</span>
+    </div>
+    <div class="trust-item reveal">
+      <i class="fa-solid fa-bolt"></i>
+      <span>Fast, Responsive Interfaces</span>
+    </div>
+  </div>
+</section>
 
     <!-- About -->
     <section class="section about" id="about">
@@ -2276,219 +2394,317 @@ textarea {
       </div>
     </section>
 
-    <!-- Featured Projects -->
-    <section class="section projects" id="projects">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="section-tag">
-            <i class="fa-solid fa-briefcase"></i>
-            Featured Projects
-          </span>
-          <h2>Work that shows design range, product thinking, and execution.</h2>
-          <p>These are some of the strongest projects in my portfolio, starting with the restaurant build and then moving into product, app, and platform work.</p>
+<!-- Featured Projects -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="section-tag">
+        <i class="fa-solid fa-briefcase"></i>
+        Featured Projects
+      </span>
+      <h2>Work that shows design range, product thinking, and execution.</h2>
+      <p>These are some of the strongest projects in my portfolio, arranged from premium brand websites to product-style platforms and app interfaces.</p>
+    </div>
+
+    <div class="featured-projects">
+
+      <!-- 1. Oaklawn Southern Dining -->
+      <article class="project project--featured reveal">
+        <div class="project__media">
+          <div class="browser-shot project-image-shot">
+            <div class="browser-shot__top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-shot__body project-image-body">
+              <img src="oaklawn-preview.jpg" alt="Oaklawn Southern Dining website preview" />
+            </div>
+          </div>
         </div>
 
-        <div class="featured-projects">
+        <div class="project__content">
+          <div class="project__topline">
+            <span class="project__tag">Luxury Restaurant Website</span>
+            <span class="project__year">01</span>
+          </div>
+          <h3>Oaklawn Southern Dining</h3>
+          <p>
+            A polished restaurant website built to feel upscale from the first screen. It focuses on strong brand presence, menu presentation, reservations, and a refined multi-section user flow.
+          </p>
 
-          <!-- Project 1 -->
-          <article class="project project--featured reveal">
-            <div class="project__media">
-              <div class="browser-shot project-image-shot">
-                <div class="browser-shot__top">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="browser-shot__body project-image-body">
-                  <img src="oaklawn-preview.jpg" alt="Oaklawn Southern Dining website preview" />
-                </div>
-              </div>
-            </div>
+          <ul class="project__highlights">
+            <li><i class="fa-solid fa-check"></i> Luxury visual direction and strong brand feel</li>
+            <li><i class="fa-solid fa-check"></i> Menu, reservations, and event-ready structure</li>
+            <li><i class="fa-solid fa-check"></i> Responsive layout built for both desktop and mobile</li>
+          </ul>
 
-            <div class="project__content">
-              <div class="project__topline">
-                <span class="project__tag">Luxury Restaurant Website</span>
-                <span class="project__year">Featured</span>
-              </div>
-              <h3>Oaklawn Southern Dining</h3>
-              <p>
-                A polished restaurant website built to feel upscale from the first screen. It focuses on strong brand presence, menu presentation, reservations, and a refined multi-section user flow.
-              </p>
+          <div class="project__stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Responsive Design</span>
+          </div>
 
-              <ul class="project__highlights">
-                <li><i class="fa-solid fa-check"></i> Luxury visual direction and strong brand feel</li>
-                <li><i class="fa-solid fa-check"></i> Menu, reservations, and event-ready structure</li>
-                <li><i class="fa-solid fa-check"></i> Responsive layout built for both desktop and mobile</li>
-              </ul>
-
-              <div class="project__stack">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Responsive Design</span>
-              </div>
-
-              <div class="project__actions">
-                <a href="#" class="btn btn--primary">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Live Demo
-                </a>
-                <a href="https://github.com/jvo-james/osd" target="_blank" rel="noreferrer" class="btn btn--ghost">
-                  <i class="fa-brands fa-github"></i>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project project--featured project--reverse reveal">
-            <div class="project__media">
-              <div class="browser-shot project-image-shot">
-                <div class="browser-shot__top">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="browser-shot__body project-image-body">
-                  <img src="vitra-preview.jpg" alt="VITRA AI website preview" />
-                </div>
-              </div>
-            </div>
-
-            <div class="project__content">
-              <div class="project__topline">
-                <span class="project__tag">AI Product Experience</span>
-                <span class="project__year">Featured</span>
-              </div>
-              <h3>VITRA AI</h3>
-              <p>
-                A health-tech product concept with a broader system feel — service pages, dashboard sections, booking flows, and a product-style layout built around modern digital healthcare.
-              </p>
-
-              <ul class="project__highlights">
-                <li><i class="fa-solid fa-check"></i> Product-style structure with multiple service areas</li>
-                <li><i class="fa-solid fa-check"></i> Dashboard thinking and interactive UI direction</li>
-                <li><i class="fa-solid fa-check"></i> Clear branding for a modern AI health platform</li>
-              </ul>
-
-              <div class="project__stack">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>UI Systems</span>
-              </div>
-
-              <div class="project__actions">
-                <a href="#" class="btn btn--primary">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Live Demo
-                </a>
-                <a href="https://github.com/jvo-james/vitra-ai" target="_blank" rel="noreferrer" class="btn btn--ghost">
-                  <i class="fa-brands fa-github"></i>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project project--featured reveal">
-            <div class="project__media">
-              <div class="browser-shot project-image-shot">
-                <div class="browser-shot__top">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="browser-shot__body project-image-body">
-                  <img src="fittrack-preview.jpg" alt="Fitness tracking dashboard preview" />
-                </div>
-              </div>
-            </div>
-
-            <div class="project__content">
-              <div class="project__topline">
-                <span class="project__tag">Fitness Dashboard</span>
-                <span class="project__year">Featured</span>
-              </div>
-              <h3>FitTrack</h3>
-              <p>
-                A fitness-focused web app concept built around progress tracking, profile flow, workouts, and dashboard-style interaction. This project pushed me more toward app thinking than simple page design.
-              </p>
-
-              <ul class="project__highlights">
-                <li><i class="fa-solid fa-check"></i> App-like layout and dashboard sections</li>
-                <li><i class="fa-solid fa-check"></i> User flow for workouts and progress tracking</li>
-                <li><i class="fa-solid fa-check"></i> Clean UI built around repeated daily use</li>
-              </ul>
-
-              <div class="project__stack">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>App UI</span>
-              </div>
-
-              <div class="project__actions">
-                <a href="#" class="btn btn--primary">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Live Demo
-                </a>
-                <a href="https://github.com/jvo-james/fit-track" target="_blank" rel="noreferrer" class="btn btn--ghost">
-                  <i class="fa-brands fa-github"></i>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 4 -->
-          <article class="project project--featured project--reverse reveal">
-            <div class="project__media">
-              <div class="browser-shot project-image-shot">
-                <div class="browser-shot__top">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="browser-shot__body project-image-body">
-                  <img src="kidswear-preview.jpg" alt="Kidswear e-commerce interface preview" />
-                </div>
-              </div>
-            </div>
-
-            <div class="project__content">
-              <div class="project__topline">
-                <span class="project__tag">E-Commerce Interface</span>
-                <span class="project__year">Featured</span>
-              </div>
-              <h3>Kidswear Storefront</h3>
-              <p>
-                A product-led shopping interface focused on presentation, browsing, and layout rhythm. It was designed to feel clean, bright, and easy to explore without looking cheap or crowded.
-              </p>
-
-              <ul class="project__highlights">
-                <li><i class="fa-solid fa-check"></i> Product-first structure with shopping flow</li>
-                <li><i class="fa-solid fa-check"></i> Visual hierarchy built around item discovery</li>
-                <li><i class="fa-solid fa-check"></i> Responsive storefront design for smaller screens</li>
-              </ul>
-
-              <div class="project__stack">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>E-Commerce UI</span>
-              </div>
-
-              <div class="project__actions">
-                <a href="#" class="btn btn--primary">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Live Demo
-                </a>
-                <a href="https://github.com/jvo-james/kidswear" target="_blank" rel="noreferrer" class="btn btn--ghost">
-                  <i class="fa-brands fa-github"></i>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
+          <div class="project__actions">
+            <a href="#" class="btn btn--primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+            <a href="https://github.com/jvo-james/osd" target="_blank" rel="noreferrer" class="btn btn--ghost">
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </article>
+
+      <!-- 2. VITRA AI -->
+      <article class="project project--featured project--reverse reveal">
+        <div class="project__media">
+          <div class="browser-shot project-image-shot">
+            <div class="browser-shot__top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-shot__body project-image-body">
+              <img src="vitra-preview.jpg" alt="VITRA AI website preview" />
+            </div>
+          </div>
+        </div>
+
+        <div class="project__content">
+          <div class="project__topline">
+            <span class="project__tag">AI Product Experience</span>
+            <span class="project__year">02</span>
+          </div>
+          <h3>VITRA AI</h3>
+          <p>
+            A health-tech product concept with a broader system feel — service pages, dashboard sections, booking flows, and a product-style layout built around modern digital healthcare.
+          </p>
+
+          <ul class="project__highlights">
+            <li><i class="fa-solid fa-check"></i> Product-style structure with multiple service areas</li>
+            <li><i class="fa-solid fa-check"></i> Dashboard thinking and interactive UI direction</li>
+            <li><i class="fa-solid fa-check"></i> Clear branding for a modern AI health platform</li>
+          </ul>
+
+          <div class="project__stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>UI Systems</span>
+          </div>
+
+          <div class="project__actions">
+            <a href="#" class="btn btn--primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+            <a href="https://github.com/jvo-james/vitra-ai" target="_blank" rel="noreferrer" class="btn btn--ghost">
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Basilissa -->
+      <article class="project project--featured reveal">
+        <div class="project__media">
+          <div class="browser-shot project-image-shot">
+            <div class="browser-shot__top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-shot__body project-image-body">
+              <img src="basilissa-preview.jpg" alt="Basilissa restaurant website preview" />
+            </div>
+          </div>
+        </div>
+
+        <div class="project__content">
+          <div class="project__topline">
+            <span class="project__tag">Premium Restaurant Brand</span>
+            <span class="project__year">03</span>
+          </div>
+          <h3>Basilissa</h3>
+          <p>
+            A bold restaurant website concept designed with stronger visual presence, better mobile structure, and a more premium fast-food brand experience.
+          </p>
+
+          <ul class="project__highlights">
+            <li><i class="fa-solid fa-check"></i> Premium food-brand presentation with cleaner hierarchy</li>
+            <li><i class="fa-solid fa-check"></i> Better layout rhythm for menus, offers, and featured items</li>
+            <li><i class="fa-solid fa-check"></i> Responsive build optimized for smaller screens</li>
+          </ul>
+
+          <div class="project__stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Brand UI</span>
+          </div>
+
+          <div class="project__actions">
+            <a href="#" class="btn btn--primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+            <a href="https://github.com/jvo-james/basilissa" target="_blank" rel="noreferrer" class="btn btn--ghost">
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Kidswear -->
+      <article class="project project--featured project--reverse reveal">
+        <div class="project__media">
+          <div class="browser-shot project-image-shot">
+            <div class="browser-shot__top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-shot__body project-image-body">
+              <img src="kidswear-preview.jpg" alt="Kidswear e-commerce interface preview" />
+            </div>
+          </div>
+        </div>
+
+        <div class="project__content">
+          <div class="project__topline">
+            <span class="project__tag">E-Commerce Interface</span>
+            <span class="project__year">04</span>
+          </div>
+          <h3>Kidswear Storefront</h3>
+          <p>
+            A product-led shopping interface focused on presentation, browsing, and layout rhythm. It was designed to feel clean, bright, and easy to explore without looking cheap or crowded.
+          </p>
+
+          <ul class="project__highlights">
+            <li><i class="fa-solid fa-check"></i> Product-first structure with shopping flow</li>
+            <li><i class="fa-solid fa-check"></i> Visual hierarchy built around item discovery</li>
+            <li><i class="fa-solid fa-check"></i> Responsive storefront design for smaller screens</li>
+          </ul>
+
+          <div class="project__stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>E-Commerce UI</span>
+          </div>
+
+          <div class="project__actions">
+            <a href="#" class="btn btn--primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+            <a href="https://github.com/jvo-james/kidswear" target="_blank" rel="noreferrer" class="btn btn--ghost">
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. FitTrack -->
+      <article class="project project--featured reveal">
+        <div class="project__media">
+          <div class="browser-shot project-image-shot">
+            <div class="browser-shot__top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-shot__body project-image-body">
+              <img src="fittrack-preview.jpg" alt="Fitness tracking dashboard preview" />
+            </div>
+          </div>
+        </div>
+
+        <div class="project__content">
+          <div class="project__topline">
+            <span class="project__tag">Fitness Dashboard</span>
+            <span class="project__year">05</span>
+          </div>
+          <h3>FitTrack</h3>
+          <p>
+            A fitness-focused web app concept built around progress tracking, profile flow, workouts, and dashboard-style interaction. This project pushed me more toward app thinking than simple page design.
+          </p>
+
+          <ul class="project__highlights">
+            <li><i class="fa-solid fa-check"></i> App-like layout and dashboard sections</li>
+            <li><i class="fa-solid fa-check"></i> User flow for workouts and progress tracking</li>
+            <li><i class="fa-solid fa-check"></i> Clean UI built around repeated daily use</li>
+          </ul>
+
+          <div class="project__stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>App UI</span>
+          </div>
+
+          <div class="project__actions">
+            <a href="#" class="btn btn--primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+            <a href="https://github.com/jvo-james/fit-track" target="_blank" rel="noreferrer" class="btn btn--ghost">
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. Shuttle Tracker -->
+      <article class="project project--featured project--reverse reveal">
+        <div class="project__media">
+          <div class="browser-shot project-image-shot">
+            <div class="browser-shot__top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-shot__body project-image-body">
+              <img src="shuttle-tracker-preview.jpg" alt="Shuttle Tracker platform preview" />
+            </div>
+          </div>
+        </div>
+
+        <div class="project__content">
+          <div class="project__topline">
+            <span class="project__tag">Transport Tracking Platform</span>
+            <span class="project__year">06</span>
+          </div>
+          <h3>Shuttle Tracker</h3>
+          <p>
+            A transport-focused tracking platform concept built around route visibility, movement status, and a cleaner dashboard-style interface for monitoring shuttle activity.
+          </p>
+
+          <ul class="project__highlights">
+            <li><i class="fa-solid fa-check"></i> Structured interface for tracking and monitoring</li>
+            <li><i class="fa-solid fa-check"></i> Dashboard-oriented layout with clearer information flow</li>
+            <li><i class="fa-solid fa-check"></i> Responsive design for quick use across devices</li>
+          </ul>
+
+          <div class="project__stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Tracking UI</span>
+          </div>
+
+          <div class="project__actions">
+            <a href="#" class="btn btn--primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Live Demo
+            </a>
+            <a href="https://github.com/jvo-james/shuttle-tracker" target="_blank" rel="noreferrer" class="btn btn--ghost">
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
 
     <!-- In Progress -->
     <section class="section archive" id="archive">
@@ -2776,345 +2992,7 @@ textarea {
   <!-- Cursor Glow -->
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const body = document.body;
-  const header = document.querySelector('.site-header');
-  const nav = document.getElementById('mainNav');
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.querySelectorAll('.nav a');
-  const sections = document.querySelectorAll('main section[id]');
-  const revealItems = document.querySelectorAll('.reveal');
-  const cursorGlow = document.getElementById('cursorGlow');
-  const hero = document.querySelector('.hero');
-  const visualStack = document.querySelector('.visual-stack');
-  const floatingPanels = document.querySelectorAll('.floating-panel');
-  const statCards = document.querySelectorAll('.stat-card');
-  const infoCards = document.querySelectorAll('.info-card');
-  const archiveCards = document.querySelectorAll('.archive-card');
-  const serviceCards = document.querySelectorAll('.service-card');
-  const skillPanels = document.querySelectorAll('.skill-panel');
-  const projectCards = document.querySelectorAll('.project');
-  const contactForm = document.querySelector('.contact-form');
-  const scrollIndicator = document.querySelector('.scroll-indicator');
 
-  let navOpen = false;
-
-  function setHeaderState() {
-    if (window.scrollY > 20) {
-      header.classList.add('is-scrolled');
-    } else {
-      header.classList.remove('is-scrolled');
-    }
-  }
-
-  function openNav() {
-    navOpen = true;
-    nav.classList.add('is-open');
-    navToggle.classList.add('is-active');
-    navToggle.setAttribute('aria-expanded', 'true');
-    body.classList.add('menu-open');
-  }
-
-  function closeNav() {
-    navOpen = false;
-    nav.classList.remove('is-open');
-    navToggle.classList.remove('is-active');
-    navToggle.setAttribute('aria-expanded', 'false');
-    body.classList.remove('menu-open');
-  }
-
-  if (navToggle && nav) {
-    navToggle.addEventListener('click', () => {
-      navOpen ? closeNav() : openNav();
-    });
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 980) {
-          closeNav();
-        }
-      });
-    });
-
-    document.addEventListener('click', (event) => {
-      const clickedInsideNav = nav.contains(event.target);
-      const clickedToggle = navToggle.contains(event.target);
-
-      if (navOpen && !clickedInsideNav && !clickedToggle && window.innerWidth <= 980) {
-        closeNav();
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 980) {
-        closeNav();
-      }
-    });
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (event) {
-      const targetId = this.getAttribute('href');
-
-      if (!targetId || targetId === '#') return;
-
-      const targetEl = document.querySelector(targetId);
-      if (!targetEl) return;
-
-      event.preventDefault();
-
-      const headerHeight = header ? header.offsetHeight : 0;
-      const offsetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - (headerHeight - 2);
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    });
-  });
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  revealItems.forEach(item => {
-    revealObserver.observe(item);
-  });
-
-  function updateActiveNavLink() {
-    let currentSectionId = '';
-
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const headerOffset = header ? header.offsetHeight + 100 : 100;
-
-      if (rect.top <= headerOffset && rect.bottom >= headerOffset) {
-        currentSectionId = section.id;
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('is-active');
-
-      const href = link.getAttribute('href');
-      if (href === `#${currentSectionId}`) {
-        link.classList.add('is-active');
-      }
-    });
-  }
-
-  function handleScrollIndicator() {
-    if (!scrollIndicator) return;
-
-    if (window.scrollY > 80) {
-      scrollIndicator.classList.add('is-hidden');
-    } else {
-      scrollIndicator.classList.remove('is-hidden');
-    }
-  }
-
-  function handleCursorGlow(event) {
-    if (!cursorGlow) return;
-
-    const x = event.clientX;
-    const y = event.clientY;
-
-    cursorGlow.style.transform = `translate(${x}px, ${y}px)`;
-  }
-
-  function handleHeroParallax(event) {
-    if (!hero || !visualStack) return;
-    if (window.innerWidth < 992) return;
-
-    const heroRect = hero.getBoundingClientRect();
-    const centerX = heroRect.left + heroRect.width / 2;
-    const centerY = heroRect.top + heroRect.height / 2;
-
-    const moveX = (event.clientX - centerX) / 35;
-    const moveY = (event.clientY - centerY) / 35;
-
-    visualStack.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-
-    floatingPanels.forEach((panel, index) => {
-      const depth = (index + 1) * 0.35;
-      panel.style.transform = `translate3d(${moveX * depth}px, ${moveY * depth}px, 0)`;
-    });
-  }
-
-  function resetHeroParallax() {
-    if (!visualStack) return;
-
-    visualStack.style.transform = 'translate3d(0, 0, 0)';
-    floatingPanels.forEach(panel => {
-      panel.style.transform = 'translate3d(0, 0, 0)';
-    });
-  }
-
-  function addTiltEffect(elements) {
-    elements.forEach(card => {
-      card.addEventListener('mousemove', (event) => {
-        if (window.innerWidth < 992) return;
-
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateY = ((x - centerX) / centerX) * 5;
-        const rotateX = ((centerY - y) / centerY) * 5;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-  }
-
-  addTiltEffect([
-    ...statCards,
-    ...infoCards,
-    ...archiveCards,
-    ...serviceCards,
-    ...skillPanels
-  ]);
-
-  projectCards.forEach(project => {
-    const media = project.querySelector('.project__media');
-    const content = project.querySelector('.project__content');
-
-    project.addEventListener('mousemove', (event) => {
-      if (window.innerWidth < 992) return;
-
-      const rect = project.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-
-      const moveX = ((x / rect.width) - 0.5) * 10;
-      const moveY = ((y / rect.height) - 0.5) * 10;
-
-      if (media) {
-        media.style.transform = `translate3d(${moveX * 0.8}px, ${moveY * 0.8}px, 0)`;
-      }
-
-      if (content) {
-        content.style.transform = `translate3d(${moveX * -0.35}px, ${moveY * -0.35}px, 0)`;
-      }
-    });
-
-    project.addEventListener('mouseleave', () => {
-      if (media) media.style.transform = '';
-      if (content) content.style.transform = '';
-    });
-  });
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const name = contactForm.querySelector('#name');
-      const email = contactForm.querySelector('#email');
-      const message = contactForm.querySelector('#message');
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-
-      const nameValue = name.value.trim();
-      const emailValue = email.value.trim();
-      const messageValue = message.value.trim();
-
-      if (!nameValue || !emailValue || !messageValue) {
-        showFormMessage('Please fill in all fields before sending your message.', 'error');
-        return;
-      }
-
-      if (!isValidEmail(emailValue)) {
-        showFormMessage('Please enter a valid email address.', 'error');
-        return;
-      }
-
-      const originalBtnHTML = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending...`;
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHTML;
-        contactForm.reset();
-        showFormMessage('Your message has been prepared successfully. Connect this form to your backend or form service to receive submissions.', 'success');
-      }, 1400);
-    });
-  }
-
-  function isValidEmail(email) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  }
-
-  function showFormMessage(message, type) {
-    let messageBox = document.querySelector('.form-message');
-
-    if (!messageBox) {
-      messageBox = document.createElement('div');
-      messageBox.className = 'form-message';
-      contactForm.appendChild(messageBox);
-    }
-
-    messageBox.textContent = message;
-    messageBox.classList.remove('success', 'error');
-    messageBox.classList.add(type);
-
-    messageBox.style.display = 'block';
-
-    clearTimeout(messageBox.dismissTimer);
-    messageBox.dismissTimer = setTimeout(() => {
-      messageBox.style.display = 'none';
-    }, 5000);
-  }
-
-  const progressBar = document.createElement('div');
-  progressBar.className = 'scroll-progress';
-  body.appendChild(progressBar);
-
-  function updateScrollProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = `${progress}%`;
-  }
-
-  window.addEventListener('scroll', () => {
-    setHeaderState();
-    updateActiveNavLink();
-    updateScrollProgress();
-    handleScrollIndicator();
-  });
-
-  window.addEventListener('mousemove', (event) => {
-    handleCursorGlow(event);
-    handleHeroParallax(event);
-  });
-
-  if (hero) {
-    hero.addEventListener('mouseleave', resetHeroParallax);
-  }
-
-  setHeaderState();
-  updateActiveNavLink();
-  updateScrollProgress();
-  handleScrollIndicator();
-});
-</script>
 </body>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
