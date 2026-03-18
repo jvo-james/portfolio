@@ -2837,25 +2837,40 @@ textarea {
               If you need a website, product interface, redesign, dashboard, or a cleaner digital presence, reach out. I’m open to freelance work, collaborations, and ambitious builds.
             </p>
 
-            <div class="contact__info">
-              <a href="mailto:senujames23@gmail.com" class="contact-link">
-                <i class="fa-solid fa-envelope-circle-check"></i>
-                <span>senujames23@gmail.com</span>
-              </a>
+        <div class="contact__info">
+  <a href="mailto:senujames23@gmail.com" class="contact-link">
+    <i class="fa-solid fa-envelope-circle-check"></i>
+    <span>senujames23@gmail.com</span>
+  </a>
 
-              <a href="https://github.com/jvo-james" target="_blank" rel="noreferrer" class="contact-link">
-                <i class="fa-brands fa-github"></i>
-                <span>github.com/jvo-james</span>
-              </a>
+  <a href="tel:+233594121246" class="contact-link">
+    <i class="fa-solid fa-phone-volume"></i>
+    <span>+233(0)594-121-246</span>
+  </a>
 
-              <a href="https://www.linkedin.com/in/james-senu-6890973aa" class="contact-link">
-                <i class="fa-brands fa-linkedin"></i>
-                <span>Your LinkedIn</span>
-              </a>
-            </div>
+  <a href="https://wa.me/233594121246" target="_blank" rel="noreferrer" class="contact-link">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Chat on WhatsApp</span>
+  </a>
+
+  <a href="https://github.com/jvo-james" target="_blank" rel="noreferrer" class="contact-link">
+    <i class="fa-brands fa-github"></i>
+    <span>github.com/jvo-james</span>
+  </a>
+
+  <a href="https://www.linkedin.com/in/james-senu-6890973aa" target="_blank" rel="noreferrer" class="contact-link">
+    <i class="fa-brands fa-linkedin"></i>
+    <span>My LinkedIn</span>
+  </a>
+</div>
           </div>
 
-          <form class="contact-form" action="#" method="post">
+         <form
+  class="contact-form"
+  id="contactForm"
+  action="https://formspree.io/f/xrbyrqry"
+  method="POST"
+>
             <div class="form-row">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your full name" required />
@@ -2871,6 +2886,9 @@ textarea {
               <textarea id="message" name="message" rows="6" placeholder="Tell me what you want to build..." required></textarea>
             </div>
 
+             <input type="hidden" name="_subject" value="New Portfolio Inquiry from James Website">
+  <input type="hidden" name="_captcha" value="false">
+           
             <button type="submit" class="btn btn--primary btn--full">
               <i class="fa-solid fa-paper-plane"></i>
               Send Message
@@ -2905,17 +2923,27 @@ textarea {
         <a href="#contact">Contact</a>
       </div>
 
-      <div class="footer__socials">
-        <a href="https://github.com/jvo-james" target="_blank" rel="noreferrer" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="mailto:senujames23@gmail.com" aria-label="Email">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-      </div>
+     <div class="footer__socials">
+  <a href="https://github.com/jvo-james" target="_blank" rel="noreferrer" aria-label="GitHub">
+    <i class="fa-brands fa-github"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/james-senu-6890973aa" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+  <a href="mailto:senujames23@gmail.com" aria-label="Email">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+
+  <a href="tel:+233594121246" aria-label="Call James">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+
+  <a href="https://wa.me/233594121246" target="_blank" rel="noreferrer" aria-label="WhatsApp James">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
     </div>
   </footer>
 
@@ -3087,7 +3115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const name = contactForm.querySelector('#name');
@@ -3113,15 +3141,31 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
       submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending...`;
 
-      setTimeout(() => {
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          contactForm.reset();
+          showFormMessage('Message sent successfully. I’ll get back to you soon.', 'success');
+        } else {
+          const data = await response.json().catch(() => ({}));
+          showFormMessage(
+            data.errors?.map(error => error.message).join(', ') || 'Something went wrong. Please try again.',
+            'error'
+          );
+        }
+      } catch (error) {
+        showFormMessage('Network error. Please try again later.', 'error');
+      } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHTML;
-        contactForm.reset();
-        showFormMessage(
-          'Your form is working on the frontend. Connect it to Formspree, EmailJS, Netlify Forms, or your backend to receive messages.',
-          'success'
-        );
-      }, 1200);
+      }
     });
   }
 
